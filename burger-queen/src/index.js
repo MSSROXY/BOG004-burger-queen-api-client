@@ -10,6 +10,6 @@ import Views from './router';
 // );
 
 ReactDOM.render(
-  <Views/>, 
+  <Views/>,
   document.getElementById('root')
 );
