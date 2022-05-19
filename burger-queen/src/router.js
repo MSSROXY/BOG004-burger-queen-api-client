@@ -12,19 +12,19 @@ export default function Views() {
         <Router>
             <div>
                     <route>
-                        <Link to = '/'>Login</Link>
+                        <Link to = '/'></Link>
                         <UserLogin/>
                     </route>
                     <route>
-                        <Link to = '/Select'>Select</Link>
+                        <Link to = '/Select'></Link>
                         <SelectWaiterOrChef/>
                     </route>
                     <route>
-                        <Link to = '/Lunchs'>Lunchs</Link>
+                        <Link to = '/Lunchs'></Link>
                         <SelectLunch/>
                     </route>
                     <route>
-                        <Link to = '/Breakfast'>Breakfast</Link>
+                        <Link to = '/Breakfast'></Link>
                         <SelectBreakfast/>
                     </route>
 
