@@ -8,8 +8,24 @@ export function UserLogin() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(`${username}, ${password}`)
-  }
+
+    const url = "http://localhost:8080/login";
+    const data = { 
+      email: username,
+      password: password
+   };
+
+    fetch(url, {
+      method: "POST", // or 'PUT'
+      body: JSON.stringify(data), // data can be `string` or {object}!
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .catch((error) => console.error("Error:", error))
+      .then((response) => console.log("Success:", response));
+  };
 
   return (
     <div className="div-login">
