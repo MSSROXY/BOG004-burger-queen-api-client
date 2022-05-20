@@ -24,8 +24,16 @@ export function UserLogin() {
     })
       .then((res) => res.json())
       .catch((error) => console.error("Error:", error))
-      .then((response) => console.log("Success:", response));
+      .then((response) => {
+          console.log('hola soy response', response)
+          const tokenUser = {};
+          sessionStorage.setItem(tokenUser,response.accessToken)
+          const saveToken = sessionStorage.getItem(tokenUser)
+         return saveToken
+        })
+
   };
+
 
   return (
     <div className="div-login">
