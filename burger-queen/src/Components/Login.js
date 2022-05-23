@@ -1,34 +1,30 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import logo from "../img/logoburger.png";
+import { loginRequest } from "./API/fetch";
 
 export function UserLogin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const Navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const url = "http://localhost:8080/login";
-    const data = { 
+    const data = {
       email: username,
-      password: password
-   };
+      password: password,
+    };
+    loginRequest(url, data)
+      .then((res) => {
+        localStorage.setItem("userToken", res.accessToken);
+        Navigate("/Select");
 
-    fetch(url, {
-      method: "POST", // or 'PUT'
-      body: JSON.stringify(data), // data can be `string` or {object}!
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .catch((error) => console.error("Error:", error))
-      .then((response) => {
-        localStorage.setItem('tokenUser',response.accessToken)
-        })
+      })
+      .catch((error) => error);
   };
-
 
   return (
     <div className="div-login">
