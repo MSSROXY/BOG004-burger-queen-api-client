@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import logo from "../img/logoburger.png";
 import { loginRequest } from "./API/fetch";
@@ -6,6 +7,7 @@ import { loginRequest } from "./API/fetch";
 export function UserLogin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const Navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,11 +18,12 @@ export function UserLogin() {
       password: password,
     };
     loginRequest(url, data)
-    .then((res) => {
-      localStorage.setItem("userToken", res.accessToken);
-      
-    })
-    .catch(error => error)
+      .then((res) => {
+        localStorage.setItem("userToken", res.accessToken);
+        // Navigate("/Select");
+
+      })
+      .catch((error) => error);
   };
 
   return (
@@ -51,4 +54,3 @@ export function UserLogin() {
     </div>
   );
 }
-
