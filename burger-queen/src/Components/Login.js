@@ -9,6 +9,7 @@ export function UserLogin() {
   const [password, setPassword] = useState("");
   const Navigate = useNavigate();
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -21,13 +22,14 @@ export function UserLogin() {
       .then((res) => {
         localStorage.setItem("userToken", res.accessToken);
         Navigate("/Select");
-
+        
       })
       .catch((error) => error);
   };
 
+
   return (
-    <div className="div-login">
+    <div className="div-general">
       <div className="div-logo">
         <img src={logo} alt="Logo BQ" className="logo-img" />
       </div>
