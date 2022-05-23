@@ -9,8 +9,9 @@ import { SelectLunch } from "./Components/Lunchs.js";
 
 export default function Views() {
     return (
-        <Router>
+  
             <div>
+                      <Router>
                     <route>
                         <Link to = '/'></Link>
                         <UserLogin/>
@@ -28,9 +29,9 @@ export default function Views() {
                         <SelectBreakfast/>
                     </route>
 
+                    </Router>
                
             </div>
 
-        </Router>
     )
 }
