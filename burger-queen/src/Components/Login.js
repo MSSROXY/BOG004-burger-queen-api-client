@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import logo from "../img/logoburger.png";
-import { loginRequest } from "./API/fetch";
+import { LoginRequest } from "./API/fetch";
 
 export function UserLogin() {
   const [username, setUsername] = useState("");
@@ -18,7 +18,7 @@ export function UserLogin() {
       email: username,
       password: password,
     };
-    loginRequest(url, data).then((res) => {
+    LoginRequest(url, data).then((res) => {
       console.log(res);
       if (res.accessToken) {
         localStorage.setItem("userToken", res.accessToken);
@@ -58,18 +58,20 @@ export function UserLogin() {
 
         <input
           className="email"
-          placeholder="Ingresa tu correo electronico"
+          placeholder="Email"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          data-testid="login-email-input"
         />
         <input
           className="password"
           type="password"
-          placeholder="Ingresa tu contraseña"
+          placeholder="Password"
           value={password}
+          required
           onChange={(e) => setPassword(e.target.value)}
         />
-        <h3 className="errorMsg" > {errorMsg} </h3>
+        <h3 data-testid="login-error-message" className="errorMsg" > {errorMsg} </h3>
 
         <button className="btn-login">INGRESAR</button>
       </form>

@@ -1,4 +1,4 @@
-export const loginRequest = (url, data) => {
+export const LoginRequest = (url, data) => {
   return fetch(url, {
     method: "POST",
     body: JSON.stringify(data),
