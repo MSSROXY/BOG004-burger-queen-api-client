@@ -68,10 +68,10 @@ export function UserLogin() {
           type="password"
           placeholder="Password"
           value={password}
-          required
           onChange={(e) => setPassword(e.target.value)}
+          data-testide="login-password-input"
         />
-        <h3 data-testid="login-error-message" className="errorMsg" > {errorMsg} </h3>
+        <h3 data-testid="Usuario no encontrado" className="errorMsg" > {errorMsg} </h3>
 
         <button className="btn-login">INGRESAR</button>
       </form>

@@ -17,10 +17,10 @@ it("Componente Login", async () => {
   const passInput = screen.getByPlaceholderText("Password")
   fireEvent.change(emailInput, { target: { value: "ayuda@gmail.com" } });
   fireEvent.change(passInput, { target: { value: "12345678" } });
-  const btnLogin = screen.getAllByText("INGRESAR");
+  const btnLogin = screen.getByText("INGRESAR");
   fireEvent.click(btnLogin);
-  let errorMsg;
-  await waitFor( () => errorMsg = screen.getByIdTest('login-error-message'));
+  await waitFor( () => ("./select") = screen.getByTestId());
   debug()
-  expect(errorMsg.textContent).toBe("Usuario no encontrado")
+  expect(textContent).toBe("./Select")
 });
+
