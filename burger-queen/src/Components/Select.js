@@ -17,7 +17,7 @@ export function SelectWaiterOrChef() {
     }
 
   return (
-    <div className="div-general">
+    <div className="div-general" data-testid="enter-select">
       <div className="div-logo">
         <img src={logo} alt="Logo BQ" className="logo-img" />
       </div>

@@ -1,26 +1,130 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import React from "react";
-import "@testing-library/jest-dom/extend-expect";
+import { render, fireEvent, waitFor, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
-import UserLogin from "./Login";
+import { UserLogin } from "./Login";
+import { SelectWaiterOrChef } from "./Select";
 
-
-it("Componente Login", async () => {
+it("Si el usuario ingresa un correo no registrado", async () => {
   const history = createMemoryHistory();
-  const { debug } = render(
+  console.log("CONTENGO HISTORY",history)
+  render(
     <Router location={history.location} navigator={history}>
-      <loginRequest/>
+      <UserLogin />
     </Router>
   );
-  const emailInput = screen.getByPlaceholderText("Email")
-  const passInput = screen.getByPlaceholderText("Password")
-  fireEvent.change(emailInput, { target: { value: "ayuda@gmail.com" } });
-  fireEvent.change(passInput, { target: { value: "12345678" } });
+  const emailInput = screen.getByTestId("login-email-input");
+  const passInput = screen.getByTestId("login-password-input");
+  fireEvent.change(emailInput, { target: { value: "hola@gmail.com" } });
+  fireEvent.change(passInput, { target: { value: 123456 } });
   const btnLogin = screen.getByText("INGRESAR");
   fireEvent.click(btnLogin);
-  await waitFor( () => ("./select") = screen.getByTestId());
-  debug()
-  expect(textContent).toBe("./Select")
+  let errorMsg;
+  await waitFor(() => (errorMsg = screen.getByTestId("login-error-message")));
+  expect(errorMsg.textContent).toBe("❌ Usuario no encontrado ❌");
 });
 
+it("Si el usuario ingresa un formato incorrecto", async () => {
+  const history = createMemoryHistory();
+  render(
+    <Router location={history.location} navigator={history}>
+      <UserLogin />
+    </Router>
+  );
+  const emailInput = screen.getByTestId("login-email-input");
+  const passInput = screen.getByTestId("login-password-input");
+  fireEvent.change(emailInput, { target: { value: "." } });
+  fireEvent.change(passInput, { target: { value: 123456 } });
+  const btnLogin = screen.getByText("INGRESAR");
+  fireEvent.click(btnLogin);
+  let errorMsg;
+  await waitFor(() => (errorMsg = screen.getByTestId("login-error-message")));
+  expect(errorMsg.textContent).toBe("❌ El formato de correo es inválido ❌");
+});
+
+it("Si el usuario no ingresa datos", async () => {
+  const history = createMemoryHistory();
+  render(
+    <Router location={history.location} navigator={history}>
+      <UserLogin />
+    </Router>
+  );
+  const emailInput = screen.getByTestId("login-email-input");
+  const passInput = screen.getByTestId("login-password-input");
+  fireEvent.change(emailInput, { target: { value: "" } });
+  fireEvent.change(passInput, { target: { value: 0 } });
+  const btnLogin = screen.getByText("INGRESAR");
+  fireEvent.click(btnLogin);
+  let errorMsg;
+  await waitFor(() => (errorMsg = screen.getByTestId("login-error-message")));
+  expect(errorMsg.textContent).toBe("❌ Correo y contraseña son requeridos ❌");
+});
+
+it("Usuario ingresa un correo no registrado", async () => {
+  const history = createMemoryHistory();
+  render(
+    <Router location={history.location} navigator={history}>
+      <UserLogin />
+    </Router>
+  );
+  const emailInput = screen.getByTestId("login-email-input");
+  const passInput = screen.getByTestId("login-password-input");
+  fireEvent.change(emailInput, { target: { value: "gisbel@prueba.com" } });
+  fireEvent.change(passInput, { target: { value: 1223456 } });
+  const btnLogin = screen.getByText("INGRESAR");
+  fireEvent.click(btnLogin);
+  let errorMsg;
+  await waitFor(() => (errorMsg = screen.getByTestId("login-error-message")));
+  expect(errorMsg.textContent).toBe("❌ Usuario no encontrado ❌");
+});
+
+it("Usuario ingresa contraseña muy corta", async () => {
+    const history = createMemoryHistory();
+    render(
+      <Router location={history.location} navigator={history}>
+        <UserLogin />
+      </Router>
+    );
+    const emailInput = screen.getByTestId("login-email-input");
+    const passInput = screen.getByTestId("login-password-input");
+    fireEvent.change(emailInput, { target: { value: "gisbel@prueba.com" } });
+    fireEvent.change(passInput, { target: { value: 12 } });
+    const btnLogin = screen.getByText("INGRESAR");
+    fireEvent.click(btnLogin);
+    let errorMsg;
+    await waitFor(() => (errorMsg = screen.getByTestId("login-error-message")));
+    expect(errorMsg.textContent).toBe("❌ La contraseña es demasiado corta ❌");
+  });
+
+  it("Usuario ingresa contraseña incorrecta", async () => {
+    const history = createMemoryHistory();
+    render(
+      <Router location={history.location} navigator={history}>
+        <UserLogin />
+      </Router>
+    );
+    const emailInput = screen.getByTestId("login-email-input");
+    const passInput = screen.getByTestId("login-password-input");
+    fireEvent.change(emailInput, { target: { value: "grace.hopper@systers.xyz" } });
+    fireEvent.change(passInput, { target: { value: 1234567890 } });
+    const btnLogin = screen.getByText("INGRESAR");
+    fireEvent.click(btnLogin);
+    let errorMsg;
+    await waitFor(() => (errorMsg = screen.getByTestId("login-error-message")));
+    expect(errorMsg.textContent).toBe("❌ La contraseña es incorrecta ❌");
+  });
+
+
+    it("Usuario ingresa correa y contraseña lo envia a la pantalla de Selección de Rol", () => {
+      const history = createMemoryHistory()
+      const route = '/Select'
+      history.push(route)
+      render(
+        <Router location={history.location} navigator={history}>
+          <SelectWaiterOrChef/>
+        </Router>,
+      )
+    
+      expect(screen.getByTestId("enter-select")).toHaveTextContent(route)
+    })
