@@ -4,6 +4,7 @@ import { UserLogin } from "./Components/Login.js";
 import { SelectWaiterOrChef } from "./Components/Select.js";
 import { SelectBreakfast } from "./Components/Breakfast.js";
 import { SelectLunch } from "./Components/Lunchs.js";
+import { SelectAdmin } from "./Components/SelectAdmin.js";
 
 export default function Views() {
   return (
@@ -13,6 +14,8 @@ export default function Views() {
         <Route path="/Select" element={<SelectWaiterOrChef />} />
         <Route path="/Lunchs" element={<SelectLunch />} />
         <Route path="/Breakfast" element={<SelectBreakfast />} />
+        <Route path="/AdminSelect" element={<SelectAdmin/>} />
+
       </Routes>
     </Router>
   );
