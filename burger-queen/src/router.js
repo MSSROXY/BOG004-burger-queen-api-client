@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { UserLogin } from "./Components/Login/Login.js";
 import { SelectWaiterOrChef } from "./Components/Select/Select.js";
 import { SelectBreakfast } from "./Components/Breakfast.js";
-import { SelectLunch } from "./Components/Lunchs.js";
+import { SelectLunch } from "./Components/Lunchs/Lunchs.js";
 import { SelectAdmin } from "./Components/Select/SelectAdmin.js";
 
 export default function Views() {

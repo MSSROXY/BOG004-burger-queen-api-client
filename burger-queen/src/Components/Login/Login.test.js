@@ -116,25 +116,25 @@ it("Usuario ingresa contraseña muy corta", async () => {
   });
 
 
-    // it("Usuario y contraseña correcta, admin es true", async () => {
-    //   const history = createMemoryHistory()
-    //   const route = '/SelectAdmin'
-    //   history.push(route)
-    //   render(
-    //     <Router location={history.location} navigator={history}>
-    //       <UserLogin />, { route }
-    //     </Router>,
-    //   );
-    //   const emailInput = screen.getByTestId("login-email-input");
-    //   const passInput = screen.getByTestId("login-password-input");
-    //   fireEvent.change(emailInput, { target: { value: "grace.hopper@systers.xyz" } });
-    //   fireEvent.change(passInput, { target: { value: 123456 } });
-    //   const btnLogin = screen.getByText("INGRESAR");
-    //   fireEvent.click(btnLogin);
-    //   let adminSelect;
-    //   await waitFor(() => (adminSelect = screen.getByTestId("enter-select")))
-    //   expect(adminSelect).toHaveTextContent("route")
-    // })
+    it("Usuario y contraseña correcta, admin es true", async () => {
+      const history = createMemoryHistory()
+      const route = '/SelectAdmin'
+      history.push(route)
+      render(
+        <Router location={history.location} navigator={history}>
+          <UserLogin />
+        </Router>,
+      );
+      const emailInput = screen.getByTestId("login-email-input");
+      const passInput = screen.getByTestId("login-password-input");
+      fireEvent.change(emailInput, { target: { value: "grace.hopper@systers.xyz" } });
+      fireEvent.change(passInput, { target: { value: 123456 } });
+      const btnLogin = screen.getByText("INGRESAR");
+      fireEvent.click(btnLogin);
+      let adminSelect;
+      await waitFor(() => (adminSelect = screen.getByTestId("enter-select")))
+      expect(adminSelect).toHaveTextContent("route")
+    })
 
 
 })
