@@ -1,8 +1,8 @@
 import React from "react";
 import "./select.css";
-import logo from "../img/logoburger.png";
-import kitchen from "../img/img-cocina.png";
-import table from "../img/img-mesas.png";
+import kitchen from "../../img/kitchen.png";
+import table from "../../img/tables.png";
+import logo from "../../img/logoburger.png"
 import { useNavigate } from "react-router-dom";
 
 export function SelectWaiterOrChef() {

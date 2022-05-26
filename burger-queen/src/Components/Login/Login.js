@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import logo from "../img/logoburger.png";
-import { loginRequest } from "./API/fetch";
+import logo from "../../img/logoburger.png";
+import { loginRequest } from "../API/fetch";
 
 export function UserLogin() {
   const [username, setUsername] = useState("");
@@ -21,6 +21,10 @@ export function UserLogin() {
     loginRequest(url, data).then((res) => {
       if (res.accessToken) {
         if (res.user.roles.admin === true) {
+          localStorage.setItem("userToken", res.accessToken);
+          navigate("/SelectAdmin");
+        }
+        else{
           localStorage.setItem("userToken", res.accessToken);
           navigate("/Select");
         }
@@ -45,7 +49,8 @@ export function UserLogin() {
             break;
         }
       }
-    });
+    }
+    );
   };
 
   return (

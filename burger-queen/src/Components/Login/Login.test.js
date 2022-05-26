@@ -4,11 +4,11 @@ import "@testing-library/jest-dom";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
 import { UserLogin } from "./Login";
-import { SelectWaiterOrChef } from "./Select";
+import { SelectAdmin } from "../Select/Select";
 
+describe('Componente Login', () => {
 it("Si el usuario ingresa un correo no registrado", async () => {
   const history = createMemoryHistory();
-  console.log("CONTENGO HISTORY",history)
   render(
     <Router location={history.location} navigator={history}>
       <UserLogin />
@@ -116,15 +116,25 @@ it("Usuario ingresa contraseña muy corta", async () => {
   });
 
 
-    it("Usuario ingresa correa y contraseña lo envia a la pantalla de Selección de Rol", () => {
-      const history = createMemoryHistory()
-      const route = '/Select'
-      history.push(route)
-      render(
-        <Router location={history.location} navigator={history}>
-          <SelectWaiterOrChef/>
-        </Router>,
-      )
-    
-      expect(screen.getByTestId("enter-select")).toHaveTextContent(route)
-    })
+    // it("Usuario y contraseña correcta, admin es true", async () => {
+    //   const history = createMemoryHistory()
+    //   const route = '/SelectAdmin'
+    //   history.push(route)
+    //   render(
+    //     <Router location={history.location} navigator={history}>
+    //       <UserLogin />, { route }
+    //     </Router>,
+    //   );
+    //   const emailInput = screen.getByTestId("login-email-input");
+    //   const passInput = screen.getByTestId("login-password-input");
+    //   fireEvent.change(emailInput, { target: { value: "grace.hopper@systers.xyz" } });
+    //   fireEvent.change(passInput, { target: { value: 123456 } });
+    //   const btnLogin = screen.getByText("INGRESAR");
+    //   fireEvent.click(btnLogin);
+    //   let adminSelect;
+    //   await waitFor(() => (adminSelect = screen.getByTestId("enter-select")))
+    //   expect(adminSelect).toHaveTextContent("route")
+    // })
+
+
+})

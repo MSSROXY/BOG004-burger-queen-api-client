@@ -1,9 +1,9 @@
 import React from "react";
 import "./select.css";
-import logo from "../img/logoburger.png";
-import kitchen from "../img/img-cocina.png";
-import table from "../img/img-mesas.png";
-import admin from "../img/admin.png";
+import logo from "../../img/logoburger.png";
+import kitchen from "../../img/kitchen.png";
+import table from "../../img/tables.png";
+import admin from "../../img/admin.png";
 import { useNavigate } from "react-router-dom";
 
 export function SelectAdmin() {
