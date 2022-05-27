@@ -14,7 +14,7 @@ export function SelectAdmin() {
     }
 
     const clickTables = () => {
-        Navigate("/Lunchs");
+        Navigate("/Menu");
     }
 
     const clickAdmin = () => {

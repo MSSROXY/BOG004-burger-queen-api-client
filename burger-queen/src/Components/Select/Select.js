@@ -13,7 +13,7 @@ export function SelectWaiterOrChef() {
     }
 
     const clickTables = () => {
-        Navigate("/Lunchs");
+        Navigate("/Menu");
     }
 
   return (

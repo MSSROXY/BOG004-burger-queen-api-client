@@ -1,10 +1,10 @@
 import React, {useState} from "react";
-import "./Lunchs.css";
+import "./Menu.css";
 import shopping from "../../img/car.png";
 import { userToken } from "../Login/Login";
 import { productsRequest } from "../API/fetch";
 
-export function SelectLunch() {
+export function Menu() {
   let [myProducts, setMyProducts] = useState('');
 
   const listProductsBreakfast = (e) =>{
@@ -16,7 +16,7 @@ export function SelectLunch() {
     .then(res => {
       if(res.length > 0){
         let products = res.filter(prod => prod.type === 'Desayuno');
-        let eachProduct = products.map(prod => prod.name)
+        let eachProduct = products.map(prod => <li>{prod.name}</li>)
         setMyProducts(eachProduct)
       }
       else{
