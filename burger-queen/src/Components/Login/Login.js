@@ -4,6 +4,8 @@ import "./Login.css";
 import logo from "../../img/logoburger.png";
 import { loginRequest } from "../API/fetch";
 
+export const userToken = localStorage.getItem('userToken');
+
 export function UserLogin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

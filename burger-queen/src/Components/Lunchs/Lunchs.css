@@ -1,90 +1,97 @@
-.div-one-fund {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 90%;
-    min-height: 90vh;
-    border-radius: 10px;
-    margin: 10px 20px 60px 20px;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), rgba(196, 196, 196, 0.6);
-    border: 1px solid #000000;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+.div-fund {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90vw;
+  height: 100%;
+  background-color: rgba(196, 196, 196, 0.6);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
-.container-buttons button{
-    width: 120px;
-    height: 40px;
-    background-color: white;
-    border-radius: 10px;
-    border: none;
-    margin: 10px 30px 10px 30px;
-    font-weight: 700;
-    font-size: 20px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+.div-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 30px;
 }
-.container-buttons button:active {
-    background: #91d161;
-
+.div-buttons button {
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  border-radius: 15px;
+  border: none;
+  font-weight: 700;
+  font-size: 20px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
-.container-buttons {
-    display: flex;
-    justify-content: center;
-
-
-
-}
-.div-options {
-width: 60%;
-display: flex;
-justify-content:space-evenly;
-background-color: #776D6D;
-border-radius: 30px;
-margin: 20px;
-
-
-}
-.div-menu{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 90%;
-    min-height: 90vh;
-    border-radius: 20px;
-    margin: 10px 20px 60px 25px;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), rgba(196, 196, 196, 0.6);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-.name-client{
-    display: flex;
-    margin-top: 500px;
-}
-.send-order{
-display: flex;
-width: 200px;
-height: 50px;
-border-radius: 10px;
-background-color: #fff;
-}
-
-.btn-ok {
-    position: relative;
-    display: flex;
-    width: 45px;
-    height: 30px;
-    padding: 4px 0px 0px 11px;
+.div-buttons button:hover{
     background-color: #91d161;
-    border: none;
-    border-radius: 10px;
-    top: 9px;
-    left: 105px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-
-
+    transition:all .5s ease-in-out;
 }
-.img-car {
-    position: relative;
-    width: 35px;
-    height: 35px;
-    top: 9px;
-    left: 10px;
 
+.div-menu {
+  width: 90%;
+  min-height: 65vh;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: space-between;
+  background: rgba(95, 92, 94, 0.59);
+  border-radius: 10px;
+}
+.div-menu .options {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  background: rgba(119, 109, 109, 1);
+  color: white;
+  border-radius: 10px 10px 0 0;
+}
+.div-menu .client-name {
+  display: flex;
+  justify-content: center;
+}
+.div-menu .client-name input {
+  width: 80%;
+  height: 45px;
+  border-radius: 10px;
+  border: none;
+  margin: 20px;
+  padding: 0 5px 0 5px;
+}
+.div-order {
+  display: flex;
+  justify-content: flex-end;
+  width: 90%;
+  height: 70px;
+  margin: 30px;
+}
+.div-order .resume {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 300px;
+  height: 100%;
+  background-color: white;
+  border-radius: 10px;
+}
+.div-order .resume img {
+  width: 45px;
+  height: 45px;
+}
+.div-order .resume button{
+  width: 35%;
+  height: 55%;
+  background-color: #91d161;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  font-size: 20px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.div-order .resume button:hover{
+    background-color: black;
+    color: #91d161;
+transition:all .5s ease-in-out;
 }
