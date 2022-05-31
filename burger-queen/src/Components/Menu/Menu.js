@@ -7,11 +7,9 @@ import { ProductsList } from "./ProductsList";
 export function Menu() {
   let [myProducts, setMyProducts] = useState("");
   let [myPrices, setMyPrices] = useState("");
-  let [add, setAdd] = useState("");
-  let [remove, setRemove] = useState("");
   let [num, setNum] = useState("");
   const url = "http://localhost:8080/products";
-  const token = getToken()
+  const token = getToken();
 
   const listProductsBreakfast = (e) => {
     e.preventDefault();
@@ -19,7 +17,7 @@ export function Menu() {
     productsRequest(url, token).then((res) => {
       if (res.length > 0) {
         let products = res.filter((prod) => prod.type === "Desayuno");
-        ProductsList(products, setMyProducts, setMyPrices, setAdd, setRemove, setNum)
+        ProductsList(products, setMyProducts, setMyPrices, setNum);
       } else {
         console.log("Error en la petición de Productos");
       }
@@ -32,7 +30,7 @@ export function Menu() {
     productsRequest(url, token).then((res) => {
       if (res.length > 0) {
         let products = res.filter((prod) => prod.type === "Almuerzo");
-        ProductsList(products, setMyProducts, setMyPrices, setAdd, setRemove, setNum)
+        ProductsList(products, setMyProducts, setMyPrices, setNum);
       } else {
         console.log("Error en la petición de Productos");
       }
@@ -54,11 +52,7 @@ export function Menu() {
           <div className="menu">
             <div className="product-name">{myProducts}</div>
             <div className="product-price">{myPrices}</div>
-            <div className="menu-btn">
-              <div className="add">{add}</div>
-              <div className="product-qty">{num}</div>
-              <div className="remove">{remove}</div>
-            </div>
+            <div className="menu-btn">{num}</div>
           </div>
           <div className="client-name">
             <input placeholder="Ingrese nombre de cliente" required></input>

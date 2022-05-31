@@ -131,6 +131,7 @@
   justify-content: space-evenly;
   background-color: #776D6D;
   border-radius: 10px;
+  flex-direction: column;
 }
 .menu-btn .add,
 .menu-btn .remove {
@@ -138,11 +139,11 @@
   flex-direction: column;
   justify-content: space-around;
 }
-.product-qty{
-  width: 30%;
+.div-select-button{
   display: flex;
-  flex-direction: column;
+  width: 100%;
   align-items: center;
+  justify-content: space-evenly;
 }
 .menu-btn button{
   height: 45px;

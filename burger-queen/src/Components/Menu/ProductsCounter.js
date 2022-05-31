@@ -1,25 +1,28 @@
-import mas from '../../img/mas.png'
-import menos from '../../img/menos.png'
+import React, { useState } from "react";
+import add from '../../img/mas.png';
+import remove from '../../img/menos.png';
 
-export const ProductsCounter = ({qty, clientQty}) => {
-    const addProduct = () => {
-        clientQty(qty +1)
+export const Counter = () => {
+    let [counter, setCounter] = useState(0);
+
+    const addProduct= () => {
+        setCounter(counter +1)
     }
-    const removeProduct =() => {
-        if(qty <= 0 ){
-            clientQty(qty)
+    const removeProduct= () => {
+        if(counter >=1){
+            setCounter(counter--)
         }
-        else clientQty(qty-1)
+        setCounter(counter)
     }
-    
+
     return(
-        <div>
+        <div className="div-select-button">
             <button onClick={addProduct}>
-                <img src={mas} alt='agregar'></img>
+                <img src={add} alt='Agregar'></img>
             </button>
-            <p>{qty}</p>
+            <p>{counter}</p>
             <button onClick={removeProduct}>
-                <img src={menos} alt='quitar'></img>
+                <img src={remove} alt='Quitar'></img>
             </button>
         </div>
     )
