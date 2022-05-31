@@ -10,12 +10,25 @@ export const loginRequest = (url, data) => {
   });
 };
 
+const tokenUser = "BQ-token";
+export const setToken = (token) => {
+  localStorage.setItem(tokenUser, token);
+};
+
+export const getToken = () => {
+  return localStorage.getItem(tokenUser);
+};
+
+export const deleteToken = () => {
+  localStorage.removeItem(tokenUser);
+};
+
 export const productsRequest = (url, token) => {
   return fetch(url, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      authorization: 'Bearer ' + token,
+      authorization: "Bearer " + token,
     },
   }).then((res) => {
     return res.json();

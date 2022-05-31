@@ -23,12 +23,12 @@ export function SelectWaiterOrChef() {
       </div>
 
       <div className="container-button">
-        <div className="div-fund">
+        <div className="div-fund-select">
           <button className="btn-select" onClick={clickKitchen}>
             <img src={kitchen} alt="Kitchen" className="img-kitchen" />
           </button>
         </div>
-        <div className="div-fund">
+        <div className="div-fund-select">
           <button className="btn-select" onClick={clickTables}>
             <img src={table} alt="Kitchen" className="img-tables" />
           </button>
