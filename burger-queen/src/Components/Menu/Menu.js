@@ -1,52 +1,45 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./Menu.css";
 import shopping from "../../img/car.png";
-import { userToken } from "../Login/Login";
-import { productsRequest } from "../API/fetch";
+import { productsRequest, getToken } from "../API/fetch";
+import { ProductsList } from "./ProductsList";
 
 export function Menu() {
-  let [myProducts, setMyProducts] = useState('');
+  let [myProducts, setMyProducts] = useState("");
+  let [myPrices, setMyPrices] = useState("");
+  let [num, setNum] = useState("");
+  const url = "http://localhost:8080/products";
+  const token = getToken();
 
-
-  const listProductsBreakfast = (e) =>{
+  const listProductsBreakfast = (e) => {
     e.preventDefault();
-    const url='http://localhost:8080/products'
-    const token = userToken;
-    
-    productsRequest(url,token)
-    .then(res => {
-      if(res.length > 0){
-        let products = res.filter(prod => prod.type === 'Desayuno');
-        let eachProduct = products.map(prod => prod.name)
-        setMyProducts(eachProduct)
-      }
-      else{
-        console.log('Error en la petición de Productos')
-      }
-    })
-  }
 
-  const listProductsLunch = (e) =>{
+    productsRequest(url, token).then((res) => {
+      if (res.length > 0) {
+        let products = res.filter((prod) => prod.type === "Desayuno");
+        ProductsList(products, setMyProducts, setMyPrices, setNum);
+      } else {
+        console.log("Error en la petición de Productos");
+      }
+    });
+  };
+
+  const listProductsLunch = (e) => {
     e.preventDefault();
-    const url='http://localhost:8080/products'
-    const token = userToken;
-    
-    productsRequest(url,token)
-    .then(res => {
-      if(res.length > 0){
-        let products = res.filter(prod => prod.type === 'Almuerzo');
-        let eachProduct = products.map(prod => prod.name)
-        setMyProducts(eachProduct)
+
+    productsRequest(url, token).then((res) => {
+      if (res.length > 0) {
+        let products = res.filter((prod) => prod.type === "Almuerzo");
+        ProductsList(products, setMyProducts, setMyPrices, setNum);
+      } else {
+        console.log("Error en la petición de Productos");
       }
-      else{
-        console.log('Error en la petición de Productos')
-      }
-    })
-  }
+    });
+  };
 
   return (
     <div className="div-general">
-      <div className="div-fund">
+      <div className="div-fund-menu">
         <div className="div-buttons">
           <button onClick={listProductsLunch}> Almuerzos </button>
           <button onClick={listProductsBreakfast}> Desayunos </button>
@@ -57,7 +50,9 @@ export function Menu() {
             <h3>Precios</h3>
           </div>
           <div className="menu">
-            <div>{myProducts}</div>
+            <div className="product-name">{myProducts}</div>
+            <div className="product-price">{myPrices}</div>
+            <div className="menu-btn">{num}</div>
           </div>
           <div className="client-name">
             <input placeholder="Ingrese nombre de cliente" required></input>
