@@ -104,7 +104,7 @@
   color: white;
 }
 /* PROBANDOOOOO */
-.list-products{
+/* .list-products{
   display: flex;
   flex-direction: column;
   width: 90%;
@@ -142,12 +142,12 @@
 .setQuantity img{
   width: 30px;
   height: 30px;
-}
+} */
 
 /* AQUI TERMINA LA PRUEBA */
 
 
-/* .product-name {
+.product-name {
   width: 45%;
   white-space: pre;
 }
@@ -205,4 +205,4 @@
   align-items: center;
   width: 100%;
   justify-content: space-evenly;
-} */
+}
