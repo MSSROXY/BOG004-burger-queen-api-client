@@ -103,8 +103,7 @@
   min-height: 100%;
   color: white;
 }
-/* PROBANDOOOOO */
-/* .list-products{
+.list-products{
   display: flex;
   flex-direction: column;
   width: 90%;
@@ -142,67 +141,4 @@
 .setQuantity img{
   width: 30px;
   height: 30px;
-} */
-
-/* AQUI TERMINA LA PRUEBA */
-
-
-.product-name {
-  width: 45%;
-  white-space: pre;
-}
-.product-price {
-  width: 15%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-.product-qty {
-  width: 5%;
-  text-align: center  ;
-}
-.myProduct {
-  display: flex;
-  height: 45px;
-  align-items: center;
-  font-size: 18px;
-}
-.menu-btn {
-  width: 20%;
-  display: flex;
-  justify-content: space-evenly;
-  background-color: #776D6D;
-  border-radius: 10px;
-  flex-direction: column;
-}
-.menu-btn .add,
-.menu-btn .remove {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-.div-select-button{
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-evenly;
-}
-.menu-btn button{
-  height: 45px;
-  width: 40px;
-  border: none;
-  background: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.menu-btn img {
-  width: 30px;
-  height: 30px;
-}
-.setQuantity{
-  display: flex;
-  align-items: center;
-  width: 100%;
-  justify-content: space-evenly;
 }
