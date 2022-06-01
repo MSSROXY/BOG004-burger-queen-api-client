@@ -18,7 +18,6 @@
 .div-buttons button {
   width: 200px;
   height: 50px;
-  background-color: white;
   border-radius: 15px;
   border: none;
   font-weight: 700;
@@ -29,7 +28,6 @@
   background-color: #91d161;
   transition: all 0.5s ease-in-out;
 }
-
 .div-menu {
   width: 90%;
   min-height: 65vh;
@@ -105,7 +103,51 @@
   min-height: 100%;
   color: white;
 }
-.product-name {
+/* PROBANDOOOOO */
+.list-products{
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  font-size: 18px;
+}
+.myProducts{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 5px 0 5px 0;
+}
+.product-name{
+  width: 55%;
+}
+.product-price{
+  width: 12%;
+}
+.setQuantity{
+  display: flex;
+  align-items: center;
+  width: 25%;
+  justify-content: space-evenly;
+  background-color: #776D6D;
+  border-radius: 10px;
+}
+.setQuantity button{
+  height: 40px;
+  width: 40px;
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.setQuantity img{
+  width: 30px;
+  height: 30px;
+}
+
+/* AQUI TERMINA LA PRUEBA */
+
+
+/* .product-name {
   width: 45%;
   white-space: pre;
 }
@@ -158,3 +200,9 @@
   width: 30px;
   height: 30px;
 }
+.setQuantity{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-evenly;
+} */

@@ -4,6 +4,8 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 .container-button .div-fund-select{
   display: flex;
@@ -11,7 +13,7 @@
   background: rgba(196, 196, 196, 0.6);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
-  width: 220px;
+  width: 190px;
   height: 230px;
 }
 .container-button img{
@@ -20,6 +22,8 @@
   margin: 40px 0 0 0;
 }
 .container-button button{
+  width: 100%;
+  height: 100%;
   background-color: transparent;
   border: none;
 }
@@ -27,4 +31,6 @@
   background-color: rgba(196, 196, 196, 0.6);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
+  width: 190px;
+  height: 230px;
 }
