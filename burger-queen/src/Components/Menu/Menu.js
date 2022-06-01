@@ -7,6 +7,7 @@ import { productsRequest } from "../API/fetch";
 export function Menu() {
   let [myProducts, setMyProducts] = useState('');
 
+
   const listProductsBreakfast = (e) =>{
     e.preventDefault();
     const url='http://localhost:8080/products'
@@ -16,7 +17,7 @@ export function Menu() {
     .then(res => {
       if(res.length > 0){
         let products = res.filter(prod => prod.type === 'Desayuno');
-        let eachProduct = products.map(prod => <li>{prod.name}</li>)
+        let eachProduct = products.map(prod => prod.name)
         setMyProducts(eachProduct)
       }
       else{
@@ -34,7 +35,7 @@ export function Menu() {
     .then(res => {
       if(res.length > 0){
         let products = res.filter(prod => prod.type === 'Almuerzo');
-        let eachProduct = products.map(prod =>prod.name)
+        let eachProduct = products.map(prod => prod.name)
         setMyProducts(eachProduct)
       }
       else{
