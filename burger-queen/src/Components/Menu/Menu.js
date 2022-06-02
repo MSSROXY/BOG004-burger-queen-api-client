@@ -6,20 +6,21 @@ import { ProductsList } from "./ProductsList";
 export function Menu() {
   let [filter, setFilter] = useState("Almuerzo");
 
-  let order = [];
+  let [order, setOrder] = useState([]);
   let [price, setPrice] = useState(0);
 
   const addProduct = (product) => {
-    order.push(product)
-    setPrice(price += product.price)
-    console.log('AUMENTO',price)
-
+    setOrder((currentOrder) => [...currentOrder, product]);
+    setPrice((price += product.price));
+    console.log(price);
+    console.log(order);
   };
   const removeProduct = (product) => {
-    if(order.includes(product)){
-      order.splice(order.indexOf(product),1)
-      setPrice(price -= product.price)
-      console.log('DISMINUYO',price)
+    setPrice((price -= product.price));
+    console.log(price);
+    if (order.includes(product)) {
+      setOrder((currentOrder) => [...currentOrder.splice(currentOrder.indexOf(product), 1)])
+      console.log(order);
     }
   };
 
@@ -47,6 +48,11 @@ export function Menu() {
               addProduct={addProduct}
               removeProduct={removeProduct}
             />
+            {order.map(item => (
+              <>
+                <h2>{item.name}</h2>
+              </>
+            ))}
           </div>
           <div className="client-name">
             <input placeholder="Ingrese nombre de cliente" required></input>
@@ -55,7 +61,7 @@ export function Menu() {
         <div className="div-order">
           <div className="resume">
             <img className="img-car" src={shopping} alt="Carrito"></img>
-            <h3> $40 </h3>
+            <h3> {price}</h3>
             <button type="submit">OK</button>
           </div>
         </div>
