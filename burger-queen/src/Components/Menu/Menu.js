@@ -7,15 +7,19 @@ export function Menu() {
   let [filter, setFilter] = useState("Almuerzo");
 
   let order = [];
+  let [price, setPrice] = useState(0);
 
   const addProduct = (product) => {
     order.push(product)
-    console.log(order);
+    setPrice(price += product.price)
+    console.log('AUMENTO',price)
+
   };
   const removeProduct = (product) => {
     if(order.includes(product)){
       order.splice(order.indexOf(product),1)
-      console.log(order)
+      setPrice(price -= product.price)
+      console.log('DISMINUYO',price)
     }
   };
 
