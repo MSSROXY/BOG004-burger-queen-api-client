@@ -69,3 +69,48 @@ export function Menu() {
     </div>
   );
 }
+
+// import React, {useState} from "react";
+// import "./Menu.css";
+// import shopping from "../../img/car.png";
+// import {BreakfastProducts, LunchProducts} from "./ProductsList"
+
+// export function Menu() {
+//   let [click, setClick] = useState('')
+
+//   const listLunch = () => {
+//     setClick(false)
+//   }
+//   const listBreakfast = () => {
+//     setClick(true)
+//   }
+//   return (
+//     <div className="div-general">
+//       <div className="div-fund-menu">
+//         <div className="div-buttons">
+//           <button onClick={listLunch}> Almuerzos </button>
+//           <button onClick={listBreakfast}> Desayunos </button>
+//         </div>
+//         <div className="div-menu">
+//           <div className="options">
+//             <h3>Productos</h3>
+//             <h3>Precios</h3>
+//           </div>
+//           <div className="menu">
+//            {click ? <BreakfastProducts /> : <LunchProducts />}
+//           </div>
+//           <div className="client-name">
+//             <input placeholder="Ingrese nombre de cliente" required></input>
+//           </div>
+//         </div>
+//         <div className="div-order">
+//           <div className="resume">
+//             <img className="img-car" src={shopping} alt="Carrito"></img>
+//             <h3> $40 </h3>
+//             <button type="submit">OK</button>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
