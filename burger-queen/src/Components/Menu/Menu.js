@@ -17,11 +17,12 @@ export function Menu() {
   };
   const removeProduct = (product) => {
     setPrice((price -= product.price));
+    setOrder((currentOrder) => [
+      ...currentOrder,
+      currentOrder.splice(currentOrder.indexOf(product), 1),
+    ]);
     console.log(price);
-    if (order.includes(product)) {
-      setOrder((currentOrder) => [...currentOrder.splice(currentOrder.indexOf(product), 1)])
-      console.log(order);
-    }
+    console.log(order);
   };
 
   const listLunch = () => {
@@ -48,7 +49,7 @@ export function Menu() {
               addProduct={addProduct}
               removeProduct={removeProduct}
             />
-            {order.map(item => (
+            {order.map((item) => (
               <>
                 <h2>{item.name}</h2>
               </>
