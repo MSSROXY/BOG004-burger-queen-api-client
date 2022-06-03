@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/BOG004-burger-queen-api-client/static/css/main.b56bf9c1.css",
+    "main.js": "/BOG004-burger-queen-api-client/static/js/main.eeab42bb.js",
+    "static/media/background.jpeg": "/BOG004-burger-queen-api-client/static/media/background.e607682fe60a93c00d71.jpeg",
+    "static/media/tables.png": "/BOG004-burger-queen-api-client/static/media/tables.5bba34f1f0ee6991f055.png",
+    "static/media/logoburger.png": "/BOG004-burger-queen-api-client/static/media/logoburger.b92148bba7081813c883.png",
+    "static/media/admin.png": "/BOG004-burger-queen-api-client/static/media/admin.6082e1da5510b03a6f62.png",
+    "static/media/kitchen.png": "/BOG004-burger-queen-api-client/static/media/kitchen.d158833e95bea395a3ae.png",
+    "index.html": "/BOG004-burger-queen-api-client/index.html",
+    "main.b56bf9c1.css.map": "/BOG004-burger-queen-api-client/static/css/main.b56bf9c1.css.map",
+    "main.eeab42bb.js.map": "/BOG004-burger-queen-api-client/static/js/main.eeab42bb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b56bf9c1.css",
+    "static/js/main.eeab42bb.js"
+  ]
+}
