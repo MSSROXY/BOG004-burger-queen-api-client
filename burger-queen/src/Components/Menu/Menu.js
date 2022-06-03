@@ -4,16 +4,36 @@ import shopping from "../../img/car.png";
 import { ProductsList } from "./ProductsList";
 
 export function Menu() {
-  let [filter, setFilter] = useState("Almuerzo");
-
+  let [filter, setFilter] = useState("");
   let [order, setOrder] = useState([]);
   let [price, setPrice] = useState(0);
 
   const addProduct = (product) => {
-    setOrder((currentOrder) => [...currentOrder, product]);
+    if (order.find(({ id }) => id === product.id)) {
+      console.log('quantityyyy',product.quantity)
+      let findIndex = order.findIndex(({ id }, index) => id === product.id);
+      console.log("cumplio con el findddd", findIndex);
+      order[findIndex] = { ...product, quantity: product.quantity + 1};
+      // const newOrder = order.map((element) => {
+      //   if (element.id === product.id) {
+      //     return {
+      //       ...element,
+      //       quantity: element.quantity + 1,
+      //     };
+      //   } else {
+      //     console.log("no cumplio con el ifff");
+      //     return element;
+      //   }
+      // });
+      setOrder(order);
+      console.log("orderrrrr", order);
+    } else {
+      order.push({ ...product, quantity: 1 });
+      setOrder(order);
+      console.log('producto nuevooo')
+    }
+    console.log("esto es el order", order);
     setPrice((price += product.price));
-    console.log(price);
-    console.log(order);
   };
   const removeProduct = (product) => {
     setPrice((price -= product.price));
@@ -21,8 +41,6 @@ export function Menu() {
       ...currentOrder,
       currentOrder.splice(currentOrder.indexOf(product), 1),
     ]);
-    console.log(price);
-    console.log(order);
   };
 
   const listLunch = () => {
@@ -51,7 +69,7 @@ export function Menu() {
             />
             {order.map((item) => (
               <>
-                <h2>{item.name}</h2>
+                <p>{item.name}</p>
               </>
             ))}
           </div>
@@ -62,7 +80,7 @@ export function Menu() {
         <div className="div-order">
           <div className="resume">
             <img className="img-car" src={shopping} alt="Carrito"></img>
-            <h3> {price}</h3>
+            <h3> $ {price}</h3>
             <button type="submit">OK</button>
           </div>
         </div>
