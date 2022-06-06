@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { productsRequest, getToken } from "../API/fetch";
 import { ProductsCounter } from "./ProductsCounter";
 
-export const ProductsList = ({filter, addProduct, removeProduct}) => {
+export const ProductsList = ({filter, addProduct, removeProduct, order}) => {
   let [data, setData] = useState([]);
   let url = "http://localhost:8080/products";
   let token = getToken();
@@ -22,7 +22,7 @@ export const ProductsList = ({filter, addProduct, removeProduct}) => {
         <div className="myProducts" key={product.id}>
           <p className="product-name">{product.name}</p>
           <p className="product-price">$ {product.price}</p>
-          <ProductsCounter addProduct={addProduct} removeProduct={removeProduct} product={product}/>
+          <ProductsCounter addProduct={addProduct} removeProduct={removeProduct} product={product} order={order}/>
         </div>
       ))}
     </div>
