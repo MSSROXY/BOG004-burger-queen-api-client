@@ -10,37 +10,24 @@ export function Menu() {
 
   const addProduct = (product) => {
     if (order.find(({ id }) => id === product.id)) {
-      console.log('quantityyyy',product.quantity)
-      let findIndex = order.findIndex(({ id }, index) => id === product.id);
-      console.log("cumplio con el findddd", findIndex);
-      order[findIndex] = { ...product, quantity: product.quantity + 1};
-      // const newOrder = order.map((element) => {
-      //   if (element.id === product.id) {
-      //     return {
-      //       ...element,
-      //       quantity: element.quantity + 1,
-      //     };
-      //   } else {
-      //     console.log("no cumplio con el ifff");
-      //     return element;
-      //   }
-      // });
-      setOrder(order);
-      console.log("orderrrrr", order);
+      let findItem = order.findIndex(({ id }) => id === product.id);
+      order[findItem].quantity++;
     } else {
       order.push({ ...product, quantity: 1 });
       setOrder(order);
-      console.log('producto nuevooo')
     }
     console.log("esto es el order", order);
     setPrice((price += product.price));
   };
   const removeProduct = (product) => {
+    let findItem = order.findIndex(({ id }) => id === product.id);
+    if (order[findItem].quantity > 1) {
+      order[findItem].quantity--;
+    } else {
+      order.splice(findItem,1)
+    }
+    console.log("esto es el order", order);
     setPrice((price -= product.price));
-    setOrder((currentOrder) => [
-      ...currentOrder,
-      currentOrder.splice(currentOrder.indexOf(product), 1),
-    ]);
   };
 
   const listLunch = () => {
