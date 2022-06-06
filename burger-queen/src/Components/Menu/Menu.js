@@ -57,6 +57,7 @@ export function Menu() {
               filter={filter}
               addProduct={addProduct}
               removeProduct={removeProduct}
+              order={order}
             />
           </div> 
           <Modal>
