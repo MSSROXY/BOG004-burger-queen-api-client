@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Menu.css";
 import shopping from "../../img/car.png";
 import { ProductsList } from "./ProductsList";
+import {Modal} from "../../Components/Modals/Modal"
 
 export function Menu() {
   let [filter, setFilter] = useState("Almuerzo");
@@ -9,11 +10,16 @@ export function Menu() {
   let [order, setOrder] = useState([]);
   let [price, setPrice] = useState(0);
 
+ 
+
   const addProduct = (product) => {
+    product.quantity = 0;
     setOrder((currentOrder) => [...currentOrder, product]);
     setPrice((price += product.price));
-    console.log(price);
-    console.log(order);
+    const total = order.reduce((previusValue, currentValue) => parseInt(previusValue) + parseInt(currentValue), 0);
+    console.log('Hola soy tu total', total)
+    // console.log(price);
+    // console.log(order); 
   };
   const removeProduct = (product) => {
     setPrice((price -= product.price));
@@ -24,6 +30,7 @@ export function Menu() {
     console.log(price);
     console.log(order);
   };
+ 
 
   const listLunch = () => {
     setFilter("Almuerzo");
@@ -49,12 +56,14 @@ export function Menu() {
               addProduct={addProduct}
               removeProduct={removeProduct}
             />
-            {order.map((item) => (
+          </div> 
+          <Modal>
+          {order.map((item) => (
               <>
                 <h2>{item.name}</h2>
               </>
             ))}
-          </div>
+          </Modal>
           <div className="client-name">
             <input placeholder="Ingrese nombre de cliente" required></input>
           </div>
