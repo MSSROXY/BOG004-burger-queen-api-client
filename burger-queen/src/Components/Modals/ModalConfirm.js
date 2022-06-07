@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import "./Modal.css";
 
 
@@ -17,7 +18,7 @@ return (
         <h2>Pedido de xxx confirmado</h2>
         <button onClick={hiddenModal}>LISTO!</button>
         </div>
-
+{closeModal ? <Menu/> : false}
     </div>
 )
 }
