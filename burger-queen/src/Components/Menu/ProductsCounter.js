@@ -3,15 +3,7 @@ import add from "../../img/mas.png";
 import remove from "../../img/menos.png";
 
 export const ProductsCounter = (myOrder) => {
-  let [counter, setCounter] = useState(() => {
-    const productsInLocalStorage = localStorage.getItem("myProducts");
-
-    return productsInLocalStorage ? JSON.parse(productsInLocalStorage) : [];
-  });
-
-  useEffect(() => {
-    localStorage.setItem("myProducts", JSON.stringify(counter));
-  }, [counter]);
+  let [counter, setCounter] = useState()
 
   const addProduct = () => {
     // setCounter(counter + 1);
@@ -25,11 +17,6 @@ export const ProductsCounter = (myOrder) => {
       counter--;
     }
     setCounter(counter);
-    // if (counter >= 1) {
-    //   // setCounter(counter--);
-    //   myOrder.removeProduct(myOrder.product);
-    // }
-    // // setCounter(counter);
   };
 
   return (

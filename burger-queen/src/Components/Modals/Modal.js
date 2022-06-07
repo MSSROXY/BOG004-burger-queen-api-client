@@ -1,4 +1,5 @@
 export const Modal = ({children}) => {
+
 return (
     <div>
         <h2>Resumen del pedido</h2>
