@@ -1,20 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import add from "../../img/mas.png";
 import remove from "../../img/menos.png";
 
 export const ProductsCounter = (myOrder) => {
   let [counter, setCounter] = useState(() => {
-    const productsInLocalStorage = localStorage.getItem("myProducts");
-
-    return productsInLocalStorage ? JSON.parse(productsInLocalStorage) : [];
+    let myIndex = myOrder.order.findIndex(({ id }) => id === myOrder.product.id);
+    let myProduct= myOrder.order[myIndex];
+    return myProduct !== undefined ? myProduct.quantity : 0
   });
 
-  useEffect(() => {
-    localStorage.setItem("myProducts", JSON.stringify(counter));
-  }, [counter]);
-
   const addProduct = () => {
-    // setCounter(counter + 1);
     myOrder.addProduct(myOrder.product);
     let myItem = myOrder.order.findIndex(({ id }) => id === myOrder.product.id);
     setCounter(myOrder.order[myItem].quantity);
@@ -25,11 +20,6 @@ export const ProductsCounter = (myOrder) => {
       counter--;
     }
     setCounter(counter);
-    // if (counter >= 1) {
-    //   // setCounter(counter--);
-    //   myOrder.removeProduct(myOrder.product);
-    // }
-    // // setCounter(counter);
   };
 
   return (
