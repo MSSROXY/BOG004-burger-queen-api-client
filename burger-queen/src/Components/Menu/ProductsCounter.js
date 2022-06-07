@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import add from "../../img/mas.png";
 import remove from "../../img/menos.png";
 
 export const ProductsCounter = (myOrder) => {
-  let [counter, setCounter] = useState()
+  let [counter, setCounter] = useState(() => {
+    let myIndex = myOrder.order.findIndex(({ id }) => id === myOrder.product.id);
+    let myProduct= myOrder.order[myIndex];
+    return myProduct !== undefined ? myProduct.quantity : 0
+  });
 
   const addProduct = () => {
-    // setCounter(counter + 1);
     myOrder.addProduct(myOrder.product);
     let myItem = myOrder.order.findIndex(({ id }) => id === myOrder.product.id);
     setCounter(myOrder.order[myItem].quantity);

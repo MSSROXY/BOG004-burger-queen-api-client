@@ -8,6 +8,8 @@ export function Menu() {
   let [filter, setFilter] = useState("");
   let [order, setOrder] = useState([]);
   let [price, setPrice] = useState(0);
+  let [clientName, setClientName] = useState("")
+  let [clientTable, setClientTable] = useState("")
 
  
 
@@ -59,16 +61,30 @@ export function Menu() {
               removeProduct={removeProduct}
               order={order}
             />
-          </div> 
+          </div>
           <Modal>
           {order.map((item) => (
               <>
                 <p>{item.name}</p>
               </>
+          
             ))}
-          </Modal>
+            </Modal>
           <div className="client-name">
-            <input placeholder="Ingrese nombre de cliente" required></input>
+            <input placeholder="Ingrese nombre de cliente" type="text" value={clientName} onChange={(e) => setClientName(e.target.value)} required></input>
+            <select placeholder="Mesa" onChange={(e) => setClientTable(e.target.value)} value={clientTable}>
+              <option value="">Mesa</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
           </div>
         </div>
         <div className="div-order">
