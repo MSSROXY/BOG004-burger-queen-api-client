@@ -2,18 +2,16 @@ import React, { useState } from "react";
 import "./Menu.css";
 import shopping from "../../img/car.png";
 import { ProductsList } from "./ProductsList";
-import {Modal} from "../../Components/Modals/Modal"
+import { Modal } from "../../Components/Modals/Modal";
 
 export function Menu() {
   let [filter, setFilter] = useState("Almuerzo");
   let [order, setOrder] = useState([]);
   let [price, setPrice] = useState(0);
-  let [clientName, setClientName] = useState("")
-  let [clientTable, setClientTable] = useState("")
-  let [modalOpen, setModalOpen] = useState(false)
+  let [clientName, setClientName] = useState("");
+  let [clientTable, setClientTable] = useState("");
+  let [modalOpen, setModalOpen] = useState(false);
   // let [modalConfirm, setModalConfirm] = useState(false)
-
- 
 
   const addProduct = (product) => {
     if (order.find(({ id }) => id === product.id)) {
@@ -30,11 +28,10 @@ export function Menu() {
     if (order[findItem].quantity > 1) {
       order[findItem].quantity--;
     } else {
-      order.splice(findItem,1)
+      order.splice(findItem, 1);
     }
     setPrice((price -= product.price));
   };
- 
 
   const listLunch = () => {
     setFilter("Almuerzo");
@@ -43,8 +40,13 @@ export function Menu() {
     setFilter("Desayuno");
   };
   const showModal = () => {
-    setModalOpen(true)
-  }
+    if(order.length === 0){
+     alert('DEBE INGRESAR PRODUCTOS')
+    }else{
+      setModalOpen(true);
+    }
+  
+  };
   return (
     <div className="div-general">
       <div className="div-fund-menu">
@@ -65,19 +67,33 @@ export function Menu() {
               order={order}
             />
           </div>
-          {modalOpen ?   <Modal setModalOpen={setModalOpen}>
-          {order.map((item) => (
-              <>
-                <p>{item.name} x {item.quantity}</p>
-        
-              </>
-          
-            ))}
-            </Modal> : false}
-       
+          {modalOpen ? (
+            <Modal setModalOpen={setModalOpen}>
+              {order.map((item) => (
+                <>
+                  <p>
+                    {item.name} x {item.quantity}
+                  </p>
+                </>
+              ))}
+            </Modal>
+          ) : (
+            false
+          )}
+
           <div className="client-name">
-            <input placeholder="Ingrese nombre de cliente" type="text" value={clientName} onChange={(e) => setClientName(e.target.value)} required></input>
-            <select placeholder="Mesa" onChange={(e) => setClientTable(e.target.value)} value={clientTable}>
+            <input
+              placeholder="Ingrese nombre de cliente"
+              type="text"
+              value={clientName}
+              onChange={(e) => setClientName(e.target.value)}
+              required
+            ></input>
+            <select
+              placeholder="Mesa"
+              onChange={(e) => setClientTable(e.target.value)}
+              value={clientTable}
+            >
               <option value="">Mesa</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -96,7 +112,9 @@ export function Menu() {
           <div className="resume">
             <img className="img-car" src={shopping} alt="Carrito"></img>
             <h3> $ {price}</h3>
-            <button type="submit" onClick={showModal}>OK</button>
+            <button type="submit" onClick={showModal}>
+              OK
+            </button>
           </div>
         </div>
       </div>

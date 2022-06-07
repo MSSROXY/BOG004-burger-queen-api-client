@@ -1,24 +1,21 @@
-import { useState } from "react";
-
 import "./Modal.css";
+import { useNavigate } from "react-router-dom";
 
-
-export const ModalConfirm = () => {
-
-    let [closeModal, setCloseModal] = useState(false)
+export const ModalConfirm = ({ setModalOpen}) => {
+    const Navigate = useNavigate();
     
-    const hiddenModal = () => {
-        setCloseModal(true)
-  }
+  const hiddenModal = () => {
+    setModalOpen(false)
+    Navigate("/Select")
+  };
 
-
-return (
+  
+  return (
     <div className="modal-background">
-        <div className="container-modal">
-        <h2>Pedido de xxx confirmado</h2>
+      <div className="container-modal">
+        <h2>Pedido Confirmado</h2>
         <button onClick={hiddenModal}>LISTO!</button>
-        </div>
-{closeModal ? <Menu/> : false}
+      </div>
     </div>
-)
-}
+  );
+};
