@@ -26,7 +26,7 @@
 }
 .div-buttons button:hover {
   background-color: #91d161;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 .div-menu {
   width: 90%;
@@ -144,3 +144,4 @@
   width: 30px;
   height: 30px;
 }
+

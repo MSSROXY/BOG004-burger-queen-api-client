@@ -1,13 +1,29 @@
-export const Modal = ({children}) => {
+import { useState } from "react";
+import "./Modal.css";
+import {ModalConfirm} from "./ModalConfirm"
+
+export const Modal = ({children,setModalOpen}) => {
+    let [modalConfirm,setModalConfirm] = useState(false)
+    let [closeModal, setCloseModal] = useState(false)
+
+    const hiddenModal = () => {
+          setModalOpen(false)
+    }
+    const showModalConfirm = () => {
+        setModalConfirm(true)
+   
+    }
 
 return (
-    <div>
+    <div className="modal-background">
+        <div className="container-modal">
         <h2>Resumen del pedido</h2>
         {children}
         <h2>¿Confirmar Pedido?</h2>
-        <button>SI</button>
-        <button>NO</button>
-
+        <button onClick={showModalConfirm}>SI</button>
+        <button onClick={hiddenModal}>NO</button>
+        </div>
+         {modalConfirm ? <ModalConfirm/> : false}
     </div>
 )
 }

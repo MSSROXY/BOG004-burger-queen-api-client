@@ -5,11 +5,13 @@ import { ProductsList } from "./ProductsList";
 import {Modal} from "../../Components/Modals/Modal"
 
 export function Menu() {
-  let [filter, setFilter] = useState("");
+  let [filter, setFilter] = useState("Almuerzo");
   let [order, setOrder] = useState([]);
   let [price, setPrice] = useState(0);
   let [clientName, setClientName] = useState("")
   let [clientTable, setClientTable] = useState("")
+  let [modalOpen, setModalOpen] = useState(false)
+  // let [modalConfirm, setModalConfirm] = useState(false)
 
  
 
@@ -21,7 +23,6 @@ export function Menu() {
       order.push({ ...product, quantity: 1 });
       setOrder(order);
     }
-    console.log("esto es el order", order);
     setPrice((price += product.price));
   };
   const removeProduct = (product) => {
@@ -31,7 +32,6 @@ export function Menu() {
     } else {
       order.splice(findItem,1)
     }
-    console.log("esto es el order", order);
     setPrice((price -= product.price));
   };
  
@@ -42,6 +42,9 @@ export function Menu() {
   const listBreakfast = () => {
     setFilter("Desayuno");
   };
+  const showModal = () => {
+    setModalOpen(true)
+  }
   return (
     <div className="div-general">
       <div className="div-fund-menu">
@@ -62,14 +65,16 @@ export function Menu() {
               order={order}
             />
           </div>
-          <Modal>
+          {modalOpen ?   <Modal setModalOpen={setModalOpen}>
           {order.map((item) => (
               <>
-                <p>{item.name}</p>
+                <p>{item.name} x {item.quantity}</p>
+        
               </>
           
             ))}
-            </Modal>
+            </Modal> : false}
+       
           <div className="client-name">
             <input placeholder="Ingrese nombre de cliente" type="text" value={clientName} onChange={(e) => setClientName(e.target.value)} required></input>
             <select placeholder="Mesa" onChange={(e) => setClientTable(e.target.value)} value={clientTable}>
@@ -91,7 +96,7 @@ export function Menu() {
           <div className="resume">
             <img className="img-car" src={shopping} alt="Carrito"></img>
             <h3> $ {price}</h3>
-            <button type="submit">OK</button>
+            <button type="submit" onClick={showModal}>OK</button>
           </div>
         </div>
       </div>
