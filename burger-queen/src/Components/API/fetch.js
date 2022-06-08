@@ -34,3 +34,25 @@ export const productsRequest = (url, token) => {
     return res.json();
   });
 };
+
+export const setUser = (data) => {
+  localStorage.setItem('myUser', data);
+};
+
+export const getUser = () => {
+  return localStorage.getItem('myUser');
+};
+
+export const sendOrderRequest = (url, token, data) => {
+  return fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: "Bearer" + token
+    },
+    
+    body: data,
+  }).then((res) => {
+    return res.json();
+  })
+}

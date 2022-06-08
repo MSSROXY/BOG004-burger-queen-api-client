@@ -1,20 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./select.css";
 import kitchen from "../../img/kitchen.png";
 import table from "../../img/tables.png";
-import logo from "../../img/logoburger.png"
+import logo from "../../img/logoburger.png";
+import admin from "../../img/admin.png";
 import { useNavigate } from "react-router-dom";
+import { getUser } from "../API/fetch";
 
 export function SelectWaiterOrChef() {
-    const Navigate = useNavigate();
+  const navigate = useNavigate();
+  let [adminOption, setAdminOption] = useState("");
 
-    const clickKitchen = () =>{
-        Navigate("/");
-    }
+  const clickKitchen = () => {
+    navigate("/Kitchen");
+  };
+  const clickTables = () => {
+    navigate("/Menu");
+  };
+  const clickAdmin = () => {
+    navigate("/");
+  };
 
-    const clickTables = () => {
-        Navigate("/Menu");
-    }
+  useEffect(() => {
+    JSON.parse(getUser()).roles.admin === true ? setAdminOption(true) : setAdminOption(false)
+    console.log(JSON.parse(getUser()).roles.admin)
+  }, []);
 
   return (
     <div className="div-general" data-testid="enter-select">
@@ -33,6 +43,15 @@ export function SelectWaiterOrChef() {
             <img src={table} alt="Kitchen" className="img-tables" />
           </button>
         </div>
+        {adminOption ? (
+          <div className="div-fund-admin">
+            <button className="btn-select" onClick={clickAdmin}>
+              <img src={admin} alt="Admin" className="img-admin" />
+            </button>
+          </div>
+        ) : (
+          false
+        )}
       </div>
     </div>
   );
