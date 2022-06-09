@@ -9,7 +9,7 @@ export function SelectWaiterOrChef() {
     const Navigate = useNavigate();
 
     const clickKitchen = () =>{
-        Navigate("/");
+        Navigate("/Kitchen");
     }
 
     const clickTables = () => {

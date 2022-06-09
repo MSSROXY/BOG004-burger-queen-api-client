@@ -34,3 +34,4 @@ export const productsRequest = (url, token) => {
     return res.json();
   });
 };
+
