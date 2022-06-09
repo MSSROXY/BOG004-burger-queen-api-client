@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import logo from "../../img/logoburger.png";
-import { loginRequest, setToken } from "../API/fetch";
+import { loginRequest, setToken, setUser } from "../API/fetch";
 
 
 export function UserLogin() {
@@ -22,14 +22,17 @@ export function UserLogin() {
     };
     loginRequest(url, data).then((res) => {
       if (res.accessToken) {
-        if (res.user.roles.admin === true) {
-          setToken(res.accessToken)
-          navigate("/SelectAdmin");
-        }
-        else{
-          setToken(res.accessToken)
-          navigate("/Select");
-        }
+        setToken(res.accessToken)
+        setUser(JSON.stringify(res.user))
+        navigate("/Select");
+        // if (res.user.roles.admin === true) {
+        //   setToken(res.accessToken)
+        //   navigate("/SelectAdmin");
+        // }
+        // else{
+        //   setToken(res.accessToken)
+        //   navigate("/Select");
+        // }
       } else {
         switch (res) {
           case "Email and password are required":

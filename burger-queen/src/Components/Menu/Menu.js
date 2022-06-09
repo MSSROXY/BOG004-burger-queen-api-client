@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Menu.css";
 import shopping from "../../img/car.png";
 import { ProductsList } from "./ProductsList";
-import { Modal } from "../../Components/Modals/Modal";
+import { ModalTicket } from "../../Components/Modals/ModalTicket";
 
 export function Menu() {
   let [filter, setFilter] = useState("Almuerzo");
@@ -11,7 +11,6 @@ export function Menu() {
   let [clientName, setClientName] = useState("");
   let [clientTable, setClientTable] = useState("");
   let [modalOpen, setModalOpen] = useState(false);
-  // let [modalConfirm, setModalConfirm] = useState(false)
 
   const addProduct = (product) => {
     if (order.find(({ id }) => id === product.id)) {
@@ -47,6 +46,7 @@ export function Menu() {
     }
   
   };
+
   return (
     <div className="div-general">
       <div className="div-fund-menu">
@@ -68,15 +68,15 @@ export function Menu() {
             />
           </div>
           {modalOpen ? (
-            <Modal setModalOpen={setModalOpen}>
+            <ModalTicket setModalOpen={setModalOpen} order={order} clientName={clientName}>
               {order.map((item) => (
-                <>
+                <div key={item.id}>
                   <p>
                     {item.name} x {item.quantity}
                   </p>
-                </>
+                </div>
               ))}
-            </Modal>
+            </ModalTicket>
           ) : (
             false
           )}
@@ -93,6 +93,7 @@ export function Menu() {
               placeholder="Mesa"
               onChange={(e) => setClientTable(e.target.value)}
               value={clientTable}
+              required
             >
               <option value="">Mesa</option>
               <option value="1">1</option>
