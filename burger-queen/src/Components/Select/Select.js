@@ -23,7 +23,6 @@ export function SelectWaiterOrChef() {
 
   useEffect(() => {
     JSON.parse(getUser()).roles.admin === true ? setAdminOption(true) : setAdminOption(false)
-    console.log(JSON.parse(getUser()).roles.admin)
   }, []);
 
   return (

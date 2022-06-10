@@ -48,3 +48,7 @@
 .container-modal .btn-red {
   background-color: red;
 }
+
+.container-modal img{
+  width: 100%;
+}

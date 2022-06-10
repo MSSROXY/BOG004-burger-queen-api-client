@@ -35,8 +35,7 @@ export const ModalTicket = ({ children, setModalOpen, order, clientName }) => {
       status: "pending",
       dateEntry: new Date(),
     };
-
-    console.log(myData);
+    
     sendOrderRequest(url,token,myData).then((res) => {
       console.log('soy respuestaaaa ',res)
     })
