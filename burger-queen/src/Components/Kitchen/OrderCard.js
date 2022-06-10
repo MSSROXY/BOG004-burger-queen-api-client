@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { listOrderRequest, getToken } from "../API/fetch";
+import { listOrderRequest, getToken, changeStatusRequest } from "../API/fetch";
 import { OrderProducts } from "./OrderProducts";
 
 export const OrderCard = ({ filterOrder }) => {
@@ -8,13 +8,28 @@ export const OrderCard = ({ filterOrder }) => {
   let token = getToken();
 
   useEffect(() => {
+    getListOrders();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filterOrder]);
+  
+  const getListOrders =() =>{
     listOrderRequest(url, token).then((res) => {
       if (typeof res === "object" && res.length > 0) {
         setOrderData(res.filter((prod) => prod.status === filterOrder));
-      } else console.log("Error en la petición de Productos");
+      } else console.log("Error en la petición de ordenes");
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filterOrder]);
+  } 
+
+  const changeToDelivered = (order) => {
+    const myToken = getToken();
+    const myUrl= "http://localhost:8080/orders/"+order.id
+    const myData = {
+      status: "delivered",
+      dateProcessed: new Date(),
+    };
+    changeStatusRequest(myUrl,myToken,myData).then(res=> console.log(res))
+    getListOrders();
+  };
 
   return (
     <>
@@ -24,7 +39,13 @@ export const OrderCard = ({ filterOrder }) => {
           <OrderProducts order={order} />
           <div className="order-footer">
             {filterOrder === "pending" ? (
-              <button>Listo</button>
+              <button
+                onClick={() => {
+                  changeToDelivered(order);
+                }}
+              >
+                Listo
+              </button>
             ) : (
               <button>Entregado</button>
             )}
