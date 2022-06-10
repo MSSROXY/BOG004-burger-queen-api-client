@@ -104,12 +104,14 @@
   justify-content: space-evenly;
   min-height: 100%;
   color: white;
+ 
 }
 .list-products{
   display: flex;
   flex-direction: column;
   width: 90%;
   font-size: 18px;
+
 }
 .myProducts{
   display: flex;

@@ -1,11 +1,20 @@
-import React from "react";
+import React, {useEffect} from "react";
+import { listOrderRequest, getToken } from "../API/fetch";
 
+export const Kitchen = () => {
+  let url = "http://localhost:8080/orders";
+  let token = getToken();
 
-export function Kitchen() {
+  useEffect(() => {
+    listOrderRequest(url, token).then((res) => {
+    console.log('traigo esto',res)
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-return(
+  return (
     <div>
-        <h1>HOLA SOMOS LA COCINA</h1>
+      <h1>HOLA SOMOS LA COCINA</h1>
     </div>
-)
-}
+  );
+};
