@@ -68,3 +68,17 @@ export const listOrderRequest = (url,token) => {
     return res.json();
   });
 }
+
+export const changeStatusRequest =(url,token,data) =>{
+  return fetch(url, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: "Bearer " + token
+    },
+    
+    body: JSON.stringify(data),
+  }).then((res) => {
+    return res.json();
+  })
+}

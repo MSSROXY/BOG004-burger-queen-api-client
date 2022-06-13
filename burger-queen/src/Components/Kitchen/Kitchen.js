@@ -5,6 +5,7 @@ import { OrderCard } from "./OrderCard";
 export const Kitchen = () => {
   let [filterOrder, setFilterOrder] = useState("");
 
+
   const listPending = () => {
     setFilterOrder("pending");
   };
