@@ -51,21 +51,20 @@ export const sendOrderRequest = (url,token, data) => {
       authorization: "Bearer " + token
     },
     
-    body: JSON.stringify(data)
+    body: JSON.stringify(data),
   }).then((res) => {
     return res.json();
   })
-};
+}
 
 export const listOrderRequest = (url,token) => {
   return fetch(url, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      authorization: "Bearer " + token
+      authorization: "Bearer " + token,
     },
-    
   }).then((res) => {
     return res.json();
-  })
+  });
 }

@@ -1,20 +1,29 @@
-import React, {useEffect} from "react";
-import { listOrderRequest, getToken } from "../API/fetch";
+import React, { useState } from "react";
+import "./Kitchen.css"
+import { OrderCard } from "./OrderCard";
 
 export const Kitchen = () => {
-  let url = "http://localhost:8080/orders";
-  let token = getToken();
+  let [filterOrder, setFilterOrder] = useState("");
 
-  useEffect(() => {
-    listOrderRequest(url, token).then((res) => {
-    console.log('traigo esto',res)
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const listPending = () => {
+    setFilterOrder("pending");
+  };
+
+  const listDelivered = () => {
+    setFilterOrder("delivered");
+  };
 
   return (
-    <div>
-      <h1>HOLA SOMOS LA COCINA</h1>
+    <div className="div-general">
+      <div className="div-fund-menu">
+        <div className="div-buttons">
+          <button onClick={listPending}> Pendientes </button>
+          <button onClick={listDelivered}> Listos </button>
+        </div>
+        <div className="div-orders">
+          <OrderCard filterOrder={filterOrder} />
+        </div>
+      </div>
     </div>
   );
 };

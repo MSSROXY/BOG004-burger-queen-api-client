@@ -1,0 +1,44 @@
+.div-orders {
+  width: 90%;
+  min-height: 75vh;
+  margin: 0 0 40px 0;
+  background: rgba(95, 92, 94, 0.59);
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+.order-card {
+  width: 85%;
+  min-height: 80%;
+  background: rgba(196, 196, 196, 0.6);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 20px;
+}
+.order-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+.order-card button {
+  width: 40%;
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+  margin: 10px;
+  font-size: 16px;
+  background-color: #efb810;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  font-weight: 600;
+}
+.order-card button:hover {
+  background-color: black;
+  color: #efb810;
+  transition: all 0.5s ease-in-out;
+}
