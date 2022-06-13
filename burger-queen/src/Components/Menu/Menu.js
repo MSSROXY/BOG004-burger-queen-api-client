@@ -68,7 +68,7 @@ export function Menu() {
             />
           </div>
           {modalOpen ? (
-            <ModalTicket setModalOpen={setModalOpen} order={order} clientName={clientName}>
+            <ModalTicket setModalOpen={setModalOpen} order={order} clientName={clientName} clientTable={clientTable}>
               {order.map((item) => (
                 <div key={item.id}>
                   <p>
