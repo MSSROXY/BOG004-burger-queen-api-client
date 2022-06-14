@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { listOrderRequest, getToken, changeStatusRequest } from "../API/fetch";
+import {
+  listOrderRequest,
+  getToken,
+  changeStatusRequest,
+  deleteOrderRequest,
+} from "../API/fetch";
 import { OrderProducts } from "./OrderProducts";
+import { OrderTime } from "./OrderTime";
 
 export const OrderCard = ({ filterOrder }) => {
   let [orderData, setOrderData] = useState([]);
+  let url = "http://localhost:8080/orders";
+  let myToken = getToken();
   let [seconds, setSeconds] = useState(0);
   let [minutes, setMinutes] = useState(0);
-  let [totalTime, setTotalTime] = useState();
 
   let timer;
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     timer = setInterval(() => {
       setSeconds(seconds + 1);
       if (seconds === 59) {
@@ -21,28 +29,20 @@ export const OrderCard = ({ filterOrder }) => {
     return () => clearInterval(timer);
   });
 
-  const stop = () => {
-    clearInterval(timer);
-  }
-
-  let url = "http://localhost:8080/orders";
-  let token = getToken();
-
   useEffect(() => {
     getListOrders();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterOrder]);
 
   const getListOrders = () => {
-    listOrderRequest(url, token).then((res) => {
-      if (typeof res === "object" && res.length > 0) {
+    listOrderRequest(url, myToken).then((res) => {
+      if (typeof res === "object" && res.length >= 0) {
         setOrderData(res.filter((prod) => prod.status === filterOrder));
       } else console.log("Error en la petición de ordenes");
     });
   };
 
   const changeToDelivered = (order) => {
-    const myToken = getToken();
     const myUrl = "http://localhost:8080/orders/" + order.id;
     const myData = {
       status: "delivered",
@@ -50,9 +50,14 @@ export const OrderCard = ({ filterOrder }) => {
     };
     changeStatusRequest(myUrl, myToken, myData).then((res) => console.log(res));
     getListOrders();
-
+    clearInterval(timer);
   };
 
+  const deleteOrder = (order) => {
+    const myUrl = "http://localhost:8080/orders/" + order.id;
+    deleteOrderRequest(myUrl, myToken).then((res) => console.log(res));
+    getListOrders();
+  };
   return (
     <>
       {orderData.map((order) => (
@@ -66,8 +71,7 @@ export const OrderCard = ({ filterOrder }) => {
                 {seconds < 10 ? "0" + seconds : seconds}
               </h5>
             ) : (
-              <h5>00:00
-              </h5>
+              <OrderTime order={order} />
             )}
             {filterOrder === "pending" ? (
               <button
@@ -78,7 +82,13 @@ export const OrderCard = ({ filterOrder }) => {
                 Listo
               </button>
             ) : (
-              <button>Entregado</button>
+              <button
+                onClick={() => {
+                  deleteOrder(order);
+                }}
+              >
+                Entregado
+              </button>
             )}
           </div>
         </div>

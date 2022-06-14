@@ -82,3 +82,15 @@ export const changeStatusRequest =(url,token,data) =>{
     return res.json();
   })
 }
+
+export const deleteOrderRequest = (url,token) => {
+  return fetch(url, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: "Bearer " + token,
+    },
+  }).then((res) => {
+    return res.json();
+  });
+}

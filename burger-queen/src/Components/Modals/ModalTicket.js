@@ -3,7 +3,7 @@ import "./Modal.css";
 import { ModalConfirm } from "./ModalConfirm";
 import { getToken, getUser, sendOrderRequest } from "../API/fetch";
 
-export const ModalTicket = ({ children, setModalOpen, order, clientName }) => {
+export const ModalTicket = ({ children, setModalOpen, order, clientName, clientTable }) => {
   let [modalConfirm, setModalConfirm] = useState(false);
 
   const hiddenModal = () => {
@@ -46,7 +46,9 @@ export const ModalTicket = ({ children, setModalOpen, order, clientName }) => {
   return (
     <div className="modal-background">
       <div className="container-modal">
-        <h2>Resumen del pedido</h2>
+        <h1>Resumen del pedido</h1>
+        <h3>Cliente : {clientName} </h3>
+        <h3>Mesa : {clientTable}</h3>
         {children}
         <h2>¿Confirmar Pedido?</h2>
         <div className="container-buttons">
