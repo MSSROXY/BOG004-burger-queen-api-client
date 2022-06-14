@@ -5,7 +5,7 @@ export const OrderCurrentTime = ({ order }) => {
   const timeEntryMS = Date.parse(order.dateEntry);
   const currentTime = Date.parse(new Date());
   const totalTimeMS = currentTime - timeEntryMS;
-  const actualTime = Math.trunc(totalTimeMS / 1000);
+  const actualTime = Math.trunc(totalTimeMS / 1000); //pasar de milisegundos a segundos
 
   let myHour = Math.floor(actualTime / 3600);
 

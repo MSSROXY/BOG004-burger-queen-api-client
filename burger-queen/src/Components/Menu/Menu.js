@@ -3,6 +3,8 @@ import "./Menu.css";
 import shopping from "../../img/car.png";
 import { ProductsList } from "./ProductsList";
 import { ModalTicket } from "../../Components/Modals/ModalTicket";
+import { useNavigate } from "react-router-dom";
+import backimg from "../../img/backimg.png";
 
 export function Menu() {
   let [filter, setFilter] = useState("Almuerzo");
@@ -11,6 +13,11 @@ export function Menu() {
   let [clientName, setClientName] = useState("");
   let [clientTable, setClientTable] = useState("");
   let [modalOpen, setModalOpen] = useState(false);
+
+  const navigate = useNavigate();
+  const back = () => {
+    navigate("/select");
+  };
 
   const addProduct = (product) => {
     if (order.find(({ id }) => id === product.id)) {
@@ -39,20 +46,26 @@ export function Menu() {
     setFilter("Desayuno");
   };
   const showModal = () => {
-    if(order.length === 0){
-     alert('DEBE INGRESAR PRODUCTOS')
-    }else{
+    if (order.length === 0) {
+      alert("DEBE INGRESAR PRODUCTOS");
+    } else {
       setModalOpen(true);
     }
-  
   };
 
   return (
     <div className="div-general">
       <div className="div-fund-menu">
-        <div className="div-buttons">
-          <button onClick={listLunch}> Almuerzos </button>
-          <button onClick={listBreakfast}> Desayunos </button>
+        <div className="div-btn-kitchen">
+          <div className="btn-back">
+            <button onClick={back}>
+              <img alt="back" src={backimg} />
+            </button>
+          </div>
+          <div className="div-buttons">
+            <button onClick={listLunch}> Almuerzos </button>
+            <button onClick={listBreakfast}> Desayunos </button>
+          </div>
         </div>
         <div className="div-menu">
           <div className="options">
@@ -68,7 +81,12 @@ export function Menu() {
             />
           </div>
           {modalOpen ? (
-            <ModalTicket setModalOpen={setModalOpen} order={order} clientName={clientName} clientTable={clientTable}>
+            <ModalTicket
+              setModalOpen={setModalOpen}
+              order={order}
+              clientName={clientName}
+              clientTable={clientTable}
+            >
               {order.map((item) => (
                 <div key={item.id}>
                   <p>

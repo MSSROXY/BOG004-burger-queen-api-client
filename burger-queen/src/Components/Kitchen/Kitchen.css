@@ -62,3 +62,36 @@
   display: flex;
   align-items: center;
 }
+
+.div-btn-kitchen {
+  display: flex;
+  align-items: center;
+}
+
+.btn-back button{
+  position: relative;
+  border: none;
+  background: none;
+  margin:0px;
+  top:5px
+}
+
+.btn-back img{
+  width: 30px;
+  height: 30px;
+}
+.btn-kitchen button {
+  width: 200px;
+  height: 50px;
+  border-radius: 15px;
+  border: none;
+  font-weight: 700;
+  font-size: 20px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  margin: 20px;
+
+}
+.btn-kitchen button:hover{
+  background-color: #91d161;
+  transition: all 0.1s ease-in-out;
+}
