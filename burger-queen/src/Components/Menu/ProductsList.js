@@ -9,7 +9,7 @@ export const ProductsList = ({filter, addProduct, removeProduct, order}) => {
 
   useEffect(() => {
     productsRequest(url, token).then((res) => {
-      if (typeof res === "object" && res.length > 0) {
+      if (typeof res === "object" && res.length >= 0) {
         setData(res.filter((prod) => prod.type === filter));
       } else console.log("Error en la petición de Productos");
     });

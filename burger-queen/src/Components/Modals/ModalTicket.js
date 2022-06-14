@@ -31,6 +31,7 @@ export const ModalTicket = ({ children, setModalOpen, order, clientName, clientT
     const myData = {
       userId: myUserId,
       client: clientName,
+      clientTable : clientTable,
       products: myProducts,
       status: "pending",
       dateEntry: new Date(),
