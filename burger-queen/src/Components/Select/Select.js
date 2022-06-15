@@ -23,7 +23,7 @@ export function SelectWaiterOrChef() {
     navigate("/Menu");
   };
   const clickAdmin = () => {
-    navigate("/");
+    navigate("/Admin");
   };
 
   useEffect(() => {
