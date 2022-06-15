@@ -95,9 +95,21 @@ export const deleteOrderRequest = (url,token) => {
   });
 }
 
-export const getUsers = (url,token) => {
+export const getUsersRequest = (url,token) => {
   return fetch(url, {
     method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: "Bearer " + token,
+    },
+  }).then((res) => {
+    return res.json();
+  });
+}
+
+export const deleteUserRequest = (url, token) => {
+  return fetch(url, {
+    method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       authorization: "Bearer " + token,

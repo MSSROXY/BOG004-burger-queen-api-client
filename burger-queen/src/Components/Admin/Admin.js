@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import backimg from "../../img/backimg.png"
-import { getUsers,getToken } from "../API/fetch";
+import { getUsersRequest,getToken } from "../API/fetch";
 import { UserCard } from "./UserCard";
 import "./Admin.css";
 
@@ -16,10 +16,10 @@ export const Admin = () => {
 };
 
     useEffect(() => {
-      getUsers(url, myToken).then((res) => setUsers(res));
+      getUsers()
     }, []);
 
-
+    const getUsers = () => getUsersRequest(url, myToken).then((res) => setUsers(res));
 
 
   return (
@@ -38,7 +38,7 @@ export const Admin = () => {
         </div>
         <div className="div-orders">
           {users.map((user) => (
-                <UserCard user={user}/>
+                <UserCard user={user} getUsers={getUsers}/>
           ))}
         </div>
       </div>
