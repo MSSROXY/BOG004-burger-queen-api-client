@@ -118,3 +118,17 @@ export const deleteUserRequest = (url, token) => {
     return res.json();
   });
 }
+
+export const editUserDataRequest =(url,token,data) =>{
+  return fetch(url, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: "Bearer " + token
+    },
+    
+    body: JSON.stringify(data),
+  }).then((res) => {
+    return res.json();
+  })
+}
