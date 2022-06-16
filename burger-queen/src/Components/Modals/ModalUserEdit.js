@@ -17,7 +17,7 @@ export const ModalUserEdit = ({ user, setShowModalEdit, getUsers }) => {
         "name" : userName.length>0 ? userName : user.name,
         "email" : userEmail.length>0 ? userEmail : user.email,
         "roles" : {
-            "admin" : userRol ==="Administrador" ? true : false
+            "admin" : userRol === "Administrador" ? true : false 
         }
     }
     editUserDataRequest(myUrl,myToken,myBody).then(res=> console.log(res))
@@ -55,9 +55,9 @@ export const ModalUserEdit = ({ user, setShowModalEdit, getUsers }) => {
             <option>Colaborador</option>
           </select>
         </div>
-        <div>
-          <button onClick={closeModal}>Cancelar</button>
-          <button onClick={editUser}>Guardar</button>
+        <div className="container-buttons">
+          <button className="btn-red" onClick={closeModal}>Cancelar</button>
+          <button className="btn-green" onClick={editUser}>Guardar</button>
         </div>
       </div>
     </div>

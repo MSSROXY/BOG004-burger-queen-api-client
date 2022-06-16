@@ -17,7 +17,7 @@ export const ModalConfirm = ({ setModalOpen}) => {
       <div className="container-modal">
         <img src={kitchen} alt="En preparación"></img>
         <h2>Pedido Confirmado</h2>
-        <button onClick={hiddenModal}>LISTO!</button>
+        <button className="btn-green" onClick={hiddenModal}>LISTO!</button>
       </div>
     </div>
   );

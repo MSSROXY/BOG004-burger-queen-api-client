@@ -15,9 +15,9 @@ export const ModalAdmin = ({setShowModal, user, getUsers}) => {
     <div className="modal-background">
       <div className="container-modal">
         <h4>¿Está seguro que quiere eliminar el usuario?</h4>
-        <div>
-          <button onClick={hiddenModal}>NO</button>
-          <button onClick={deleteUser}>SI</button>
+        <div className="container-buttons">
+          <button className="btn-red" onClick={hiddenModal}>NO</button>
+          <button className="btn-green" onClick={deleteUser}>SI</button>
         </div>
       </div>
     </div>
