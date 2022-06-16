@@ -10,6 +10,7 @@ export const ModalUserEdit = ({ user, setShowModalEdit, getUsers }) => {
     setShowModalEdit(false);
   };
 
+
   const editUser = () => {
     const myToken = getToken();
     const myUrl = "http://localhost:8080/users/" + user.id;

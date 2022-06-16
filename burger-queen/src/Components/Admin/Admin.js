@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import backimg from "../../img/backimg.png";
 import addUser from "../../img/addUser.png";
-import { getUsersRequest, getToken } from "../API/fetch";
+import { getUsersRequest, getToken, getUser } from "../API/fetch";
 import { UserCard } from "./UserCard";
 import { ModalRegister } from "../Modals/ModalRegister";
 import "./Admin.css";
@@ -53,7 +53,7 @@ export const Admin = () => {
               <UserCard user={user} getUsers={getUsers} />
             ))}
           </div>
-        {showModal ? <ModalRegister setShowModal={setShowModal}/> : false}
+        {showModal ? <ModalRegister setShowModal={setShowModal} getUsers={getUsers}/> : false}
         </div>
       </div>
     </div>

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { userRegisterRequest, getToken } from "../API/fetch";
 
-export const ModalRegister = ({ setShowModal }) => {
+export const ModalRegister = ({ setShowModal, getUsers }) => {
   let [userName, setUserName] = useState("");
   let [userEmail, setUserEmail] = useState("");
   let [userPassword, setUserPassword] = useState("");
-  let [userRol, setUserRol] = useState();
+  let [userRol, setUserRol] = useState("Administrador");
 
   const hiddenModal = () => {
     setShowModal(false);
@@ -22,7 +22,9 @@ export const ModalRegister = ({ setShowModal }) => {
         admin: userRol === "Administrador" ? true : false,
       },
     };
-    userRegisterRequest(myUrl, myToken, myBody).then(res => console.log(res))
+    userRegisterRequest(myUrl, myToken, myBody).then((res) => console.log(res))
+    getUsers();
+    setShowModal(false);
   };
   return (
     <div className="modal-background">
