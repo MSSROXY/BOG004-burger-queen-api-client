@@ -4,7 +4,7 @@ import { editUserDataRequest, getToken } from "../API/fetch";
 export const ModalUserEdit = ({ user, setShowModalEdit, getUsers }) => {
   let [userName, setUserName] = useState("");
   let [userEmail, setUserEmail] = useState("");
-  let [userRol, setUserRol] = useState("");
+  let [userRol, setUserRol] = useState(user.roles.admin === true ? "Administrador" : "Colaborador");
 
   const closeModal = () => {
     setShowModalEdit(false);
@@ -13,17 +13,18 @@ export const ModalUserEdit = ({ user, setShowModalEdit, getUsers }) => {
   const editUser = () => {
     const myToken = getToken();
     const myUrl = "http://localhost:8080/users/" + user.id;
+
     const myBody = {
-        "name" : userName.length>0 ? userName : user.name,
-        "email" : userEmail.length>0 ? userEmail : user.email,
-        "roles" : {
-            "admin" : userRol === "Administrador" ? true : false 
-        }
-    }
-    editUserDataRequest(myUrl,myToken,myBody).then(res=> console.log(res))
+      name: userName.length > 0 ? userName : user.name,
+      email: userEmail.length > 0 ? userEmail : user.email,
+      roles: {
+        admin: userRol === "Administrador" ? true : false,
+      },
+    };
+    editUserDataRequest(myUrl, myToken, myBody).then((res) => console.log(res));
     setShowModalEdit(false);
     getUsers();
-  }
+  };
 
   return (
     <div className="modal-background">
@@ -55,7 +56,7 @@ export const ModalUserEdit = ({ user, setShowModalEdit, getUsers }) => {
             <option>Colaborador</option>
           </select>
         </div>
-        <div className="container-buttons">
+        <div className ="container-buttons">
           <button className="btn-red" onClick={closeModal}>Cancelar</button>
           <button className="btn-green" onClick={editUser}>Guardar</button>
         </div>
