@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import {ModalAdmin} from "../Modals/ModalAdmin.js"
+import { ModalAdmin } from "../Modals/ModalAdmin.js";
+import { ModalUserEdit } from "../Modals/ModalUserEdit.js";
 
 export const UserCard = ({ user, getUsers }) => {
   let [showModal, setShowModal] = useState(false)
-  const editUser = (user) => {
-    const userId = user.id;
-    console.log(userId);
+  let [showModalEdit, setShowModalEdit]= useState(false)
+
+  const openModalEdit = () => {
+    setShowModalEdit(true)
   };
   const openModal = () => {
     setShowModal(true)
@@ -20,13 +22,14 @@ export const UserCard = ({ user, getUsers }) => {
         Rol: {user.roles.admin === true ? "Administrador" : "Colaborador"}
       </h5>
       <div className="user-footer">
-        <button onClick={() => editUser(user)} className="btn-green">
+        <button onClick={openModalEdit} className="btn-green">
           Editar
         </button>
         <button onClick={openModal} className="btn-red">
           Eliminar
         </button>
       </div>
+      {showModalEdit ? <ModalUserEdit setShowModalEdit={setShowModalEdit} user={user} getUsers={getUsers}/> : false}
       {showModal ? <ModalAdmin setShowModal={setShowModal} user={user} getUsers={getUsers}/> : false}
     </div>
   );
