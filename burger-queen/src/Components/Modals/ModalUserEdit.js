@@ -41,9 +41,8 @@ export const ModalUserEdit = ({ user, setShowModalEdit, getUsers }) => {
           <p>
             Email :
             <textarea
-              onChange={(e) => setUserEmail(e.target.value)}
-              defaultValue={user.email}
-            ></textarea>
+              onChange={(e) => console.log(setUserEmail(e.target.value))}
+              defaultValue={user.email}></textarea>
           </p>
           <p>Rol :</p>
           <select
