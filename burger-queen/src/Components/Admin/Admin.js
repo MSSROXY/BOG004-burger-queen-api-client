@@ -31,24 +31,24 @@ export const Admin = () => {
 
   return (
     <div className="div-general">
-      <div className="div-fund-menu">
-        <div className="div-btn-kitchen">
+      <div className="div-fund-kitchen">
+        <div className="div-btn-menu">
           <div className="btn-back">
             <button onClick={back}>
               <img alt="back" src={backimg} />
             </button>
           </div>
-          <div className="btn-kitchen">
+          <div className="div-buttons">
             <button> Usuarios </button>
             <button> Productos </button>
           </div>
         </div>
-        <div className="div-welcome">
+        <div className="div-orders">
           <div className="div-header">
-            <h3>Bienvenido Admin!</h3>
-            <button onClick={openModalRegister}><img src={addUser}></img></button>
+            <h2>Bienvenido Admin</h2>
+            <button onClick={openModalRegister}><img src={addUser} alt="addUser"></img></button>
           </div>
-          <div className="div-orders">
+          <div className="div-container-cards">
             {users.map((user) => (
               <UserCard user={user} getUsers={getUsers} />
             ))}

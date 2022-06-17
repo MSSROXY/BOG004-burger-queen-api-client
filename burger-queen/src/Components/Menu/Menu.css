@@ -9,6 +9,19 @@
   margin: 40px;
   border-radius: 10px;
 }
+.div-btn-menu{
+  display: flex;
+  width: 90%;
+  align-items: center;
+  justify-content: center;
+}
+.btn-back button{
+  background-color: transparent;
+  border: none;
+}
+.btn-back img{
+  width: 40px;
+}
 .div-buttons {
   display: flex;
   justify-content: center;
@@ -110,7 +123,7 @@
   display: flex;
   flex-direction: column;
   width: 90%;
-  font-size: 18px;
+  font-size: 17px;
   margin:20px 0 0 0;
 }
 .myProducts{
