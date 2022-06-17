@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { editUserDataRequest, getToken } from "../API/fetch";
+import { editDataRequest, getToken } from "../API/fetch";
 
 export const ModalUserEdit = ({ user, setShowModalEdit, getUsers }) => {
   let [userName, setUserName] = useState("");
@@ -22,7 +22,7 @@ export const ModalUserEdit = ({ user, setShowModalEdit, getUsers }) => {
         admin: userRol === "Administrador" ? true : false,
       },
     };
-    editUserDataRequest(myUrl, myToken, myBody).then((res) => console.log(res));
+    editDataRequest(myUrl, myToken, myBody).then((res) => console.log(res));
     setShowModalEdit(false);
     getUsers();
   };
@@ -42,7 +42,7 @@ export const ModalUserEdit = ({ user, setShowModalEdit, getUsers }) => {
           <p>
             Email :
             <textarea
-              onChange={(e) => console.log(setUserEmail(e.target.value))}
+              onChange={(e) => setUserEmail(e.target.value)}
               defaultValue={user.email}></textarea>
           </p>
           <p>Rol :</p>

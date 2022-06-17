@@ -119,7 +119,7 @@ export const deleteRequest = (url, token) => {
   });
 }
 
-export const editUserDataRequest =(url,token,data) =>{
+export const editDataRequest =(url,token,data) =>{
   return fetch(url, {
     method: "PATCH",
     headers: {
