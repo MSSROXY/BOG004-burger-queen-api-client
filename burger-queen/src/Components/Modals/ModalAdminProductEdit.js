@@ -1,14 +1,13 @@
-import { editDataRequest } from "../API/fetch";
+import { editDataRequest, getToken } from "../API/fetch";
 
-export const ModalAdminProductEdit = ({ product,
-  setShowModalEdit,
-  getListOrdersAdmin,
-}) => {
+export const ModalAdminProductEdit = ({ product, setShowModalEdit, getListOrdersAdmin }) => {
 
-    console.log('SOYYYYYYYYYYYY',product)
+
   const hiddenModal = () => {
     setShowModalEdit(false);
   };
+
+
 
   return (
     <div className="modal-background">
@@ -16,10 +15,10 @@ export const ModalAdminProductEdit = ({ product,
         <h4>Editar información</h4>
         <div>
           <p>
-            Producto :<textarea defaultValue={product.name}></textarea>
+            Producto : <textarea defaultValue={product.name}></textarea>
           </p>
           <p>
-            Precio :<textarea defaultValue={product.price}></textarea>
+            Precio : <textarea defaultValue={product.price}></textarea>
           </p>
           <p>Tipo :</p>
           <select>

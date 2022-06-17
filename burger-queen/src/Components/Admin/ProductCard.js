@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { getToken } from "../API/fetch";
 import { productsRequest } from "../API/fetch";
 import { ModalAdminProducts } from "../Modals/ModalAdminProducts"
@@ -52,7 +52,7 @@ setShowModalProducts(true)
           Eliminar
         </button>
       </div>
-      {showModalEdit ? <ModalAdminProductEdit product={product} setShowModalEdit={setShowModalEdit}  getListOrdersAdmin={getListOrdersAdmin}/> : false}
+       {showModalEdit ? <ModalAdminProductEdit product={product} setShowModalEdit={setShowModalEdit}  getListOrdersAdmin={getListOrdersAdmin}/> : false}
       {showModalProducts ? <ModalAdminProducts product={product} setShowModalProducts={setShowModalProducts} getListOrdersAdmin={getListOrdersAdmin}/> : false}
     </div>
     ))}

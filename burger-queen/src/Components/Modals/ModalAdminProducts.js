@@ -8,7 +8,6 @@ export const ModalAdminProducts = ({ setShowModalProducts, product, getListOrder
 const deleteProduct = () => {
  const productId = product.id;
  const myUrl = "http://localhost:8080/products/" + productId;
- console.log('soy la url', myUrl)
  const myToken = getToken();
  deleteRequest(myUrl, myToken).then((res) => console.log(res));
  getListOrdersAdmin()
