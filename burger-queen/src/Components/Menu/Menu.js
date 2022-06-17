@@ -56,7 +56,7 @@ export function Menu() {
   return (
     <div className="div-general">
       <div className="div-fund-menu">
-        <div className="div-btn-kitchen">
+        <div className="div-btn-menu">
           <div className="btn-back">
             <button onClick={back}>
               <img alt="back" src={backimg} />

@@ -1,4 +1,4 @@
-import { getToken, deleteUserRequest } from "../API/fetch";
+import { getToken, deleteRequest } from "../API/fetch";
 export const ModalAdmin = ({setShowModal, user, getUsers}) => {
     const hiddenModal = () => {
         setShowModal(false)
@@ -7,7 +7,7 @@ export const ModalAdmin = ({setShowModal, user, getUsers}) => {
         const userId = user.id;
         const myUrl = "http://localhost:8080/users/" + userId;
         const myToken = getToken();
-        deleteUserRequest(myUrl, myToken).then((res) => console.log(res));
+        deleteRequest(myUrl, myToken).then((res) => console.log(res));
         getUsers()
         setShowModal(false)
     }

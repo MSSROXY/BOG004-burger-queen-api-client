@@ -107,7 +107,7 @@ export const getUsersRequest = (url,token) => {
   });
 }
 
-export const deleteUserRequest = (url, token) => {
+export const deleteRequest = (url, token) => {
   return fetch(url, {
     method: "DELETE",
     headers: {

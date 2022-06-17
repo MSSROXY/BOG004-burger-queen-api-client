@@ -13,8 +13,8 @@ export function SelectWaiterOrChef() {
   let [adminOption, setAdminOption] = useState("");
 
   const logOut = () => {
-    navigate("/")
-  }
+    navigate("/");
+  };
 
   const clickKitchen = () => {
     navigate("/Kitchen");
@@ -27,35 +27,33 @@ export function SelectWaiterOrChef() {
   };
 
   useEffect(() => {
-    JSON.parse(getUser()).roles.admin === true ? setAdminOption(true) : setAdminOption(false)
+    JSON.parse(getUser()).roles.admin === true
+      ? setAdminOption(true)
+      : setAdminOption(false);
   }, []);
 
   return (
     <div className="div-general" data-testid="enter-select">
-      <div className="btn-logOut">
-      <button onClick={logOut}><img alt="logOut" src={signOut}/></button>
+      <div className="btn-logout">
+        <button onClick={logOut}>
+          <img alt="logOut" src={signOut} />
+        </button>
       </div>
-      <div className="div-logo">
+      <div className="div-logo-select">
         <img src={logo} alt="Logo BQ" className="logo-img" />
       </div>
 
       <div className="container-button">
-        <div className="div-fund-select">
-          <button className="btn-select" onClick={clickKitchen}>
-            <img src={kitchen} alt="Kitchen" className="img-kitchen" />
-          </button>
-        </div>
-        <div className="div-fund-select">
-          <button className="btn-select" onClick={clickTables}>
-            <img src={table} alt="Kitchen" className="img-tables" />
-          </button>
-        </div>
+        <button onClick={clickKitchen}>
+          <img src={kitchen} alt="Kitchen" className="img-kitchen" />
+        </button>
+        <button onClick={clickTables}>
+          <img src={table} alt="Kitchen" className="img-tables" />
+        </button>
         {adminOption ? (
-          <div className="div-fund-admin">
-            <button className="btn-select" onClick={clickAdmin}>
-              <img src={admin} alt="Admin" className="img-admin" />
-            </button>
-          </div>
+          <button onClick={clickAdmin}>
+            <img src={admin} alt="Admin" className="img-admin" />
+          </button>
         ) : (
           false
         )}
