@@ -6,8 +6,10 @@ import { getUsersRequest, getToken, getUser } from "../API/fetch";
 import { UserCard } from "./UserCard";
 import { ModalRegister } from "../Modals/ModalRegister";
 import "./Admin.css";
+import { ProductAdmin } from "./ProductAdmin"
 
 export const Admin = () => {
+  let[filterAdmin, setFilterAdmin] = useState("users")
   let [users, setUsers] = useState([]);
   let [showModal , setShowModal] = useState(false);
   let url = "http://localhost:8080/users";
@@ -17,6 +19,16 @@ export const Admin = () => {
   const back = () => {
     navigate("/select");
   };
+
+
+  const listUsers = () => {
+    setFilterAdmin("users");
+  };
+
+  const listProducts = () => {
+    setFilterAdmin("products");
+  };
+
 
   useEffect(() => {
     getUsers();
@@ -39,8 +51,8 @@ export const Admin = () => {
             </button>
           </div>
           <div className="btn-kitchen">
-            <button> Usuarios </button>
-            <button> Productos </button>
+            <button onClick={listUsers}> Usuarios </button>
+            <button onClick={listProducts}> Productos </button>
           </div>
         </div>
         <div className="div-welcome">
@@ -54,6 +66,9 @@ export const Admin = () => {
             ))}
           </div>
         {showModal ? <ModalRegister setShowModal={setShowModal} getUsers={getUsers}/> : false}
+        </div>
+        <div className="div-orders">
+          <ProductAdmin filterAdmin={filterAdmin} />
         </div>
       </div>
     </div>
