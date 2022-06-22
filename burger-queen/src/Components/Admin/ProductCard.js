@@ -1,62 +1,52 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { getToken } from "../API/fetch";
-import { productsRequest } from "../API/fetch";
-import { ModalAdminProducts } from "../Modals/ModalAdminProducts"
+import React, { useState } from "react";
+import { ModalAdminProducts } from "../Modals/ModalAdminProducts";
 import { ModalAdminProductEdit } from "../Modals/ModalAdminProductEdit";
 
-export const ProductCard = () => {
-  let [showModalProducts, setShowModalProducts] = useState(false)
-  let [showModalEdit, setShowModalEdit] = useState(false)
-  let [products, setProducts] = useState([])
-  let url = "http://localhost:8080/products";
-  let myToken = getToken();
+export const ProductCard = ({product, getProducts}) => {
+  let [showModalDelete, setShowModalDelete] = useState(false);
+  let [showModalEdit, setShowModalEdit] = useState(false);
 
-  const openModal = () => {
-setShowModalProducts(true)
-  }
-
-  const openModalEdit = (product) => {
+  const openModalEdit = () => {
     setShowModalEdit(true)
-    console.log(product)
-  }
-  useEffect(() => {
-    getListOrdersAdmin();
-  }, []);
-
-  const getListOrdersAdmin = () => {
-    productsRequest(url, myToken).then((res) => setProducts(res));
   };
-
+  const openModalDelete = () => {
+    setShowModalDelete(true)
+  };
   return (
-    <>
-    {products.map((product) => (
-    <div className="order-card">
-      <div className="user-info">
-      <h4>Id: </h4> {product.id}
+    <div key={product.id} className="order-card">
+       <div className="user-info">
+        <h4>Product : </h4>
+        {product.name}
       </div>
       <div className="user-info">
-      <h4>Producto: </h4> {product.name}
+        <h4>ID : </h4>
+        {product.id}
       </div>
       <div className="user-info">
-      <h4>Precio: </h4> ${product.price}
+        <h4>Precio : </h4>
+        {product.price}
       </div>
       <div className="user-info">
-      <h4>Tipo: </h4> {product.type}
+        <h4>Tipo : </h4>
+        {product.type}
       </div>
-     
       <div className="user-footer">
-        <button className="btn-green" onClick={ () => {openModalEdit(product)}}>
+        <button className="btn-green" onClick={openModalEdit}>
           Editar
         </button>
-        <button className="btn-red" onClick={openModal}>
+        <button className="btn-red" onClick={openModalDelete}>
           Eliminar
         </button>
       </div>
-       {showModalEdit ? <ModalAdminProductEdit product={product} setShowModalEdit={setShowModalEdit}  getListOrdersAdmin={getListOrdersAdmin}/> : false}
-      {showModalProducts ? <ModalAdminProducts product={product} setShowModalProducts={setShowModalProducts} getListOrdersAdmin={getListOrdersAdmin}/> : false}
+      {showModalEdit ? <ModalAdminProductEdit setShowModalEdit={setShowModalEdit} getProducts={getProducts} product={product}/> : false}
+      {showModalDelete ? <ModalAdminProducts setShowModalDelete={setShowModalDelete} getProducts={getProducts} product={product}/> : false}
     </div>
-    ))}
-    </>
-
   )
 };
+
+
+
+
+
+
+

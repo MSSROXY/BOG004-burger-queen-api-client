@@ -86,7 +86,7 @@ export function UserLogin() {
          {errorMsg} 
         </h3>}
 
-        <button className="btn-login">INGRESAR</button>
+        <button className="btn-login" data-testid="enter-select">INGRESAR</button>
       </form>
     </div>
   );
