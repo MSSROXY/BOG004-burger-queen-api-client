@@ -4,7 +4,6 @@ import "@testing-library/jest-dom";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
 import { UserLogin } from "./Login";
-import { SelectAdmin } from "../Select/Select";
 
 describe("Componente Login", () => {
   it("Si el usuario ingresa un correo no registrado", async () => {
@@ -130,14 +129,13 @@ describe("Componente Login", () => {
     );
     const emailInput = screen.getByTestId("login-email-input");
     const passInput = screen.getByTestId("login-password-input");
-    fireEvent.change(emailInput, {
-      target: { value: "grace.hopper@systers.xyz" },
+    fireEvent.change(emailInput, { target: { value: "grace.hopper@systers.xyz" },
     });
     fireEvent.change(passInput, { target: { value: 123456 } });
     const btnLogin = screen.getByText("INGRESAR");
     fireEvent.click(btnLogin);
-    let adminSelect;
-    await waitFor(() => (adminSelect = screen.getByTestId("enter-select")));
-    expect(adminSelect).toHaveTextContent("route");
+    await waitFor(() => {
+      expect(history.location.pathname).toEqual(route);
+    });
   });
 });
