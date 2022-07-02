@@ -1,0 +1,79 @@
+.div-fund-kitchen{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  min-height: 100%;
+  background-color: rgba(196, 196, 196, 0.6);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  margin: 40px;
+}
+.div-orders{
+  width: 90%;
+  min-height: 75vh;
+  background: rgba(95, 92, 94, 0.59);
+  margin-bottom: 40px;
+  border-radius: 10px;
+}
+.div-container-cards{
+  margin: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 20px;
+  align-items: baseline;
+}
+.order-card{
+  max-height: 100%;
+  background: rgba(196, 196, 196, 0.6);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.client-info {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin:10px
+}
+.client-products{
+  width: 90%;
+}
+.order-footer{
+  display: flex;
+  width: 90%;
+  margin: 10px;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+}
+.timer{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.order-footer img{
+  width: 20px;
+  height: 20px;
+}
+.order-footer button{
+  width: 40%;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  background-color: #efb810;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  margin: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.order-card button:hover {
+  background-color: black;
+  color: #efb810;
+  transition: all 0.5s ease-in-out;
+}
